@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Login | Kisanसेतु</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/farmer-login.css">
+</head>
+
+<body class="auth-page">
+    <main class="auth-shell">
+        <a class="auth-brand" href="../index.html#home" aria-label="Return to Kisanसेतु home">
+            <span class="auth-brand-mark" aria-hidden="true">K</span>
+            <span>Kisanसेतु</span>
+        </a>
+
+        <section class="login-card" aria-labelledby="login-title">
+            <div class="login-card-icon" aria-hidden="true">&#127806;</div>
+            <p class="auth-eyebrow">Farmer account</p>
+            <h1 id="login-title">Farmer login</h1>
+            <p class="login-intro">Welcome back! Please login to continue.</p>
+
+            <form id="farmer-login-form" novalidate>
+                <label class="field-label" for="mobile-number">Mobile number</label>
+                <div class="mobile-field">
+                    <span aria-hidden="true">+91</span>
+                    <input id="mobile-number" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="Enter your 10-digit mobile number" required>
+                </div>
+                <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+                <button class="send-otp-button" type="submit">Send OTP</button>
+            </form>
+
+            <p class="register-prompt">New farmer? <a href="register-farmer.html">Register as farmer</a></p>
+            <div class="support-line">
+                <span aria-hidden="true">&#9742;</span>
+                <span>Need help? <a href="mailto:support@kisansetu.in">Contact support</a></span>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/farmer-login.js"></script>
+</body>
+
+</html>

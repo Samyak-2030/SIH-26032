@@ -126,6 +126,134 @@
                 </div>
             </div>
         </section>
+
+        <section class="centre-status-section" id="centres">
+            <div class="centre-container">
+                <div class="centre-heading">
+                    <p class="section-eyebrow">Find your nearest centre</p>
+                    <h2>Centre status</h2>
+                    <p>Live status of procurement centres across India</p>
+                </div>
+
+                <div class="centre-toolbar">
+                    <label class="search-field">
+                        <span class="sr-only">Search by centre or district</span>
+                        <span class="search-icon" aria-hidden="true">&#128269;</span>
+                        <input id="centre-search" type="search" placeholder="Search by centre / district">
+                    </label>
+                    <label class="state-field">
+                        <span class="sr-only">Select state</span>
+                        <select id="state-filter">
+                            <option value="all">All states</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Chhattisgarh</option>
+                            <option>Goa</option>
+                            <option>Gujarat</option>
+                            <option>Haryana</option>
+                            <option>Himachal Pradesh</option>
+                            <option>Jharkhand</option>
+                            <option>Karnataka</option>
+                            <option>Kerala</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Maharashtra</option>
+                            <option>Manipur</option>
+                            <option>Meghalaya</option>
+                            <option>Mizoram</option>
+                            <option>Nagaland</option>
+                            <option>Odisha</option>
+                            <option>Punjab</option>
+                            <option>Rajasthan</option>
+                            <option>Sikkim</option>
+                            <option>Tamil Nadu</option>
+                            <option>Telangana</option>
+                            <option>Tripura</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Uttarakhand</option>
+                            <option>West Bengal</option>
+                            <option>Andaman and Nicobar Islands</option>
+                            <option>Chandigarh</option>
+                            <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                            <option>Delhi</option>
+                            <option>Jammu and Kashmir</option>
+                            <option>Ladakh</option>
+                            <option>Lakshadweep</option>
+                            <option>Puducherry</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="centre-table-wrap">
+                    <table class="centre-table">
+                        <thead>
+                            <tr>
+                                <th>Centre name</th>
+                                <th>District</th>
+                                <th>Farmers waiting</th>
+                                <th>Waiting time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="centre-table-body">
+                            <tr data-centre="Kisan Seva Centre, Indore" data-district="Indore" data-state="Madhya Pradesh" data-waiting="24 minutes" data-status="normal">
+                                <td><strong>Kisan Seva Centre</strong><small>Indore</small></td>
+                                <td>Indore</td>
+                                <td>18 farmers</td>
+                                <td>24 minutes</td>
+                                <td><span class="status status-normal">Normal</span></td>
+                            </tr>
+                            <tr data-centre="Annadatha Centre, Guntur" data-district="Guntur" data-state="Andhra Pradesh" data-waiting="42 minutes" data-status="busy">
+                                <td><strong>Annadatha Centre</strong><small>Guntur</small></td>
+                                <td>Guntur</td>
+                                <td>36 farmers</td>
+                                <td>42 minutes</td>
+                                <td><span class="status status-busy">Busy</span></td>
+                            </tr>
+                            <tr data-centre="Sheti Seva Kendra, Nashik" data-district="Nashik" data-state="Maharashtra" data-waiting="31 minutes" data-status="moderate">
+                                <td><strong>Sheti Seva Kendra</strong><small>Nashik</small></td>
+                                <td>Nashik</td>
+                                <td>27 farmers</td>
+                                <td>31 minutes</td>
+                                <td><span class="status status-moderate">Moderate</span></td>
+                            </tr>
+                            <tr data-centre="Kisan Suvidha Centre, Karnal" data-district="Karnal" data-state="Haryana" data-waiting="16 minutes" data-status="normal">
+                                <td><strong>Kisan Suvidha Centre</strong><small>Karnal</small></td>
+                                <td>Karnal</td>
+                                <td>11 farmers</td>
+                                <td>16 minutes</td>
+                                <td><span class="status status-normal">Normal</span></td>
+                            </tr>
+                            <tr data-centre="Krishi Bazaar Centre, Jaipur" data-district="Jaipur" data-state="Rajasthan" data-waiting="55 minutes" data-status="busy">
+                                <td><strong>Krishi Bazaar Centre</strong><small>Jaipur</small></td>
+                                <td>Jaipur</td>
+                                <td>48 farmers</td>
+                                <td>55 minutes</td>
+                                <td><span class="status status-busy">Busy</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="no-results" hidden>No centres match your search.</p>
+                </div>
+
+                <div class="map-heading">
+                    <button class="map-button" type="button" id="view-map">View on map</button>
+                    <span id="selected-centre">Select a centre to view its location</span>
+                </div>
+                <div class="sample-map" id="sample-map" aria-label="Sample map of procurement centres" role="img">
+                    <div class="map-grid" aria-hidden="true"></div>
+                    <span class="map-road road-one" aria-hidden="true"></span>
+                    <span class="map-road road-two" aria-hidden="true"></span>
+                    <span class="map-pin map-pin-normal pin-one" data-map-centre="Kisan Seva Centre, Indore" aria-hidden="true"></span>
+                    <span class="map-pin map-pin-busy pin-two" data-map-centre="Annadatha Centre, Guntur" aria-hidden="true"></span>
+                    <span class="map-pin map-pin-moderate pin-three" data-map-centre="Sheti Seva Kendra, Nashik" aria-hidden="true"></span>
+                    <span class="map-pin map-pin-normal pin-four" data-map-centre="Kisan Suvidha Centre, Karnal" aria-hidden="true"></span>
+                    <span class="map-pin map-pin-busy pin-five" data-map-centre="Krishi Bazaar Centre, Jaipur" aria-hidden="true"></span>
+                    <div class="map-label">India procurement network</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="js/script.js"></script>

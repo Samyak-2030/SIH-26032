@@ -18,30 +18,35 @@
             </a>
 
             <div class="nav-links">
-                <a class="nav-link active" href="#home">Home</a>
-                <a class="nav-link" href="#centres">Centres</a>
-                <a class="nav-link" href="#how-it-works">How it works</a>
-                <a class="nav-link" href="#about-us">About us</a>
-                <a class="nav-link" href="#help">Help</a>
+                <a class="nav-link active" href="#home" data-i18n="navHome">Home</a>
+                <a class="nav-link" href="#centres" data-i18n="navCentres">Centres</a>
+                <a class="nav-link" href="#how-it-works" data-i18n="navHow">How it works</a>
+                <a class="nav-link" href="#about-us" data-i18n="navAbout">About us</a>
+                <a class="nav-link" href="#help" data-i18n="navHelp">Help</a>
+                <button class="language-toggle" type="button" aria-label="Switch to Hindi" aria-pressed="false">
+                    <span class="language-option language-option-active">EN</span>
+                    <span class="language-divider">/</span>
+                    <span class="language-option">हिन्दी</span>
+                </button>
             </div>
 
             <div class="login-menu">
                 <button class="login-button" type="button" aria-expanded="false" aria-controls="login-options">
-                    Login
+                    <span data-i18n="login">Login</span>
                     <span class="chevron" aria-hidden="true"></span>
                 </button>
                 <div class="login-options" id="login-options" role="menu">
                     <a href="#farmer-login" role="menuitem">
                         <span class="option-icon" aria-hidden="true">&#127806;</span>
-                        <span><strong>Farmer login</strong><small>Access your farmer account</small></span>
+                        <span><strong data-i18n="farmerLogin">Farmer login</strong><small data-i18n="farmerLoginHelp">Access your farmer account</small></span>
                     </a>
                     <a href="#admin-login" role="menuitem">
                         <span class="option-icon" aria-hidden="true">&#128101;</span>
-                        <span><strong>Admin / govt login</strong><small>For administrators and officials</small></span>
+                        <span><strong data-i18n="adminLogin">Admin / govt login</strong><small data-i18n="adminLoginHelp">For administrators and officials</small></span>
                     </a>
                     <a href="#register" role="menuitem">
                         <span class="option-icon" aria-hidden="true">&#43;</span>
-                        <span><strong>Register as farmer</strong><small>Join Kisanसेतु today</small></span>
+                        <span><strong data-i18n="registerFarmer">Register as farmer</strong><small data-i18n="registerFarmerHelp">Join Kisanसेतु today</small></span>
                     </a>
                 </div>
             </div>
@@ -51,38 +56,30 @@
     <main>
         <section class="hero-section" id="home">
             <div class="hero-content">
-                <p class="hero-eyebrow">Kisanसेतु procurement platform</p>
-                <h1>Sell your crop,<br><span>without the wait</span></h1>
-                <p class="hero-description">Book your slot, track queue in real time, and get updates on procurements
+                <p class="hero-eyebrow" data-i18n="heroEyebrow">Kisanसेतु procurement platform</p>
+                <h1><span data-i18n="heroTitleFirst">Sell your crop,</span><br><span data-i18n="heroTitleSecond">without the wait</span></h1>
+                <p class="hero-description" data-i18n="heroDescription">Book your slot, track queue in real time, and get updates on procurements
                     and payments.</p>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#book-procurement">Book procurement slot</a>
-                    <a class="button button-secondary" href="#centre-status">Check centre status</a>
+                    <a class="button button-primary" href="#book-procurement" data-i18n="bookSlot">Book procurement slot</a>
+                    <a class="button button-secondary" href="#centre-status" data-i18n="checkStatus">Check centre status</a>
                 </div>
                 <div class="hero-stats" aria-label="Kisanसेतु platform statistics">
                     <div class="stat-item">
                         <span class="stat-icon" aria-hidden="true">&#127970;</span>
-                        <span class="stat-copy"><strong class="stat-value"><span
-                                    data-target="235">0</span>+</strong><span class="stat-label">Procurement
-                                centres</span></span>
+                        <span class="stat-copy"><strong class="stat-value"><span data-target="235">0</span>+</strong><span class="stat-label" data-i18n="statCentres">Procurement centres</span></span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-icon" aria-hidden="true">&#128100;</span>
-                        <span class="stat-copy"><strong class="stat-value"><span
-                                    data-target="12000">0</span></strong><span class="stat-label">Farmers
-                                today</span></span>
+                        <span class="stat-copy"><strong class="stat-value"><span data-target="12000">0</span></strong><span class="stat-label" data-i18n="statFarmers">Farmers today</span></span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-icon" aria-hidden="true">&#10003;</span>
-                        <span class="stat-copy"><strong class="stat-value"><span
-                                    data-target="9831">0</span></strong><span class="stat-label">Completed
-                                today</span></span>
+                        <span class="stat-copy"><strong class="stat-value"><span data-target="9831">0</span></strong><span class="stat-label" data-i18n="statCompleted">Completed today</span></span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-icon" aria-hidden="true">&#8377;</span>
-                        <span class="stat-copy"><strong class="stat-value"><span
-                                    data-target="98">0</span>%</strong><span class="stat-label">Payment on
-                                time</span></span>
+                        <span class="stat-copy"><strong class="stat-value"><span data-target="98">0</span>%</strong><span class="stat-label" data-i18n="statPayment">Payment on time</span></span>
                     </div>
                 </div>
             </div>
@@ -91,36 +88,36 @@
         <section class="reasons-section" id="why-kisansetu">
             <div class="reasons-container">
                 <div class="reasons-heading">
-                    <p class="section-eyebrow">Simple, reliable, transparent</p>
-                    <h2>Why farmers choose Kisanसेतु</h2>
+                    <p class="section-eyebrow" data-i18n="reasonsEyebrow">Simple, reliable, transparent</p>
+                    <h2 data-i18n="reasonsHeading">Why farmers choose Kisanसेतु</h2>
                 </div>
                 <div class="reasons-list">
                     <article class="reason-item">
                         <span class="reason-icon" aria-hidden="true">&#9201;</span>
                         <div>
-                            <h3>Save time</h3>
-                            <p>Live queuing and slot booking</p>
+                            <h3 data-i18n="saveTime">Save time</h3>
+                            <p data-i18n="saveTimeHelp">Live queuing and slot booking</p>
                         </div>
                     </article>
                     <article class="reason-item">
                         <span class="reason-icon" aria-hidden="true">&#128276;</span>
                         <div>
-                            <h3>Real-time updates</h3>
-                            <p>Get notified at every step</p>
+                            <h3 data-i18n="liveUpdates">Real-time updates</h3>
+                            <p data-i18n="liveUpdatesHelp">Get notified at every step</p>
                         </div>
                     </article>
                     <article class="reason-item">
                         <span class="reason-icon" aria-hidden="true">&#128202;</span>
                         <div>
-                            <h3>Transparent process</h3>
-                            <p>Track procurement and payment</p>
+                            <h3 data-i18n="transparent">Transparent process</h3>
+                            <p data-i18n="transparentHelp">Track procurement and payment</p>
                         </div>
                     </article>
                     <article class="reason-item">
                         <span class="reason-icon" aria-hidden="true">&#128205;</span>
                         <div>
-                            <h3>Nearby centre</h3>
-                            <p>Find the best centre near you</p>
+                            <h3 data-i18n="nearbyCentre">Nearby centre</h3>
+                            <p data-i18n="nearbyCentreHelp">Find the best centre near you</p>
                         </div>
                     </article>
                 </div>
@@ -130,21 +127,21 @@
         <section class="centre-status-section" id="centres">
             <div class="centre-container">
                 <div class="centre-heading">
-                    <p class="section-eyebrow">Find your nearest centre</p>
-                    <h2>Centre status</h2>
-                    <p>Live status of procurement centres across India</p>
+                    <p class="section-eyebrow" data-i18n="centreEyebrow">Find your nearest centre</p>
+                    <h2 data-i18n="centreHeading">Centre status</h2>
+                    <p data-i18n="centreDescription">Live status of procurement centres across India</p>
                 </div>
 
                 <div class="centre-toolbar">
                     <label class="search-field">
                         <span class="sr-only">Search by centre or district</span>
                         <span class="search-icon" aria-hidden="true">&#128269;</span>
-                        <input id="centre-search" type="search" placeholder="Search by centre / district">
+                        <input id="centre-search" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Search by centre / district">
                     </label>
                     <label class="state-field">
                         <span class="sr-only">Select state</span>
                         <select id="state-filter">
-                            <option value="all">All states</option>
+                            <option value="all" data-i18n="allStates">All states</option>
                             <option>Andhra Pradesh</option>
                             <option>Arunachal Pradesh</option>
                             <option>Assam</option>
@@ -189,11 +186,11 @@
                     <table class="centre-table">
                         <thead>
                             <tr>
-                                <th>Centre name</th>
-                                <th>District</th>
-                                <th>Farmers waiting</th>
-                                <th>Waiting time</th>
-                                <th>Status</th>
+                                <th data-i18n="tableCentre">Centre name</th>
+                                <th data-i18n="tableDistrict">District</th>
+                                <th data-i18n="tableWaiting">Farmers waiting</th>
+                                <th data-i18n="tableTime">Waiting time</th>
+                                <th data-i18n="tableStatus">Status</th>
                             </tr>
                         </thead>
                         <tbody id="centre-table-body">
@@ -202,44 +199,44 @@
                                 <td>Indore</td>
                                 <td>18 farmers</td>
                                 <td>24 minutes</td>
-                                <td><span class="status status-normal">Normal</span></td>
+                                <td><span class="status status-normal" data-i18n="normal">Normal</span></td>
                             </tr>
                             <tr data-centre="Annadatha Centre, Guntur" data-district="Guntur" data-state="Andhra Pradesh" data-waiting="42 minutes" data-status="busy">
                                 <td><strong>Annadatha Centre</strong><small>Guntur</small></td>
                                 <td>Guntur</td>
                                 <td>36 farmers</td>
                                 <td>42 minutes</td>
-                                <td><span class="status status-busy">Busy</span></td>
+                                <td><span class="status status-busy" data-i18n="busy">Busy</span></td>
                             </tr>
                             <tr data-centre="Sheti Seva Kendra, Nashik" data-district="Nashik" data-state="Maharashtra" data-waiting="31 minutes" data-status="moderate">
                                 <td><strong>Sheti Seva Kendra</strong><small>Nashik</small></td>
                                 <td>Nashik</td>
                                 <td>27 farmers</td>
                                 <td>31 minutes</td>
-                                <td><span class="status status-moderate">Moderate</span></td>
+                                <td><span class="status status-moderate" data-i18n="moderate">Moderate</span></td>
                             </tr>
                             <tr data-centre="Kisan Suvidha Centre, Karnal" data-district="Karnal" data-state="Haryana" data-waiting="16 minutes" data-status="normal">
                                 <td><strong>Kisan Suvidha Centre</strong><small>Karnal</small></td>
                                 <td>Karnal</td>
                                 <td>11 farmers</td>
                                 <td>16 minutes</td>
-                                <td><span class="status status-normal">Normal</span></td>
+                                <td><span class="status status-normal" data-i18n="normal">Normal</span></td>
                             </tr>
                             <tr data-centre="Krishi Bazaar Centre, Jaipur" data-district="Jaipur" data-state="Rajasthan" data-waiting="55 minutes" data-status="busy">
                                 <td><strong>Krishi Bazaar Centre</strong><small>Jaipur</small></td>
                                 <td>Jaipur</td>
                                 <td>48 farmers</td>
                                 <td>55 minutes</td>
-                                <td><span class="status status-busy">Busy</span></td>
+                                <td><span class="status status-busy" data-i18n="busy">Busy</span></td>
                             </tr>
                         </tbody>
                     </table>
-                    <p class="no-results" hidden>No centres match your search.</p>
+                    <p class="no-results" data-i18n="noResults" hidden>No centres match your search.</p>
                 </div>
 
                 <div class="map-heading">
-                    <button class="map-button" type="button" id="view-map">View on map</button>
-                    <span id="selected-centre">Select a centre to view its location</span>
+                    <button class="map-button" type="button" id="view-map" data-i18n="viewMap">View on map</button>
+                    <span id="selected-centre" data-i18n="selectCentre">Select a centre to view its location</span>
                 </div>
                 <div class="sample-map" id="sample-map" aria-label="Sample map of procurement centres" role="img">
                     <div class="map-grid" aria-hidden="true"></div>
@@ -250,11 +247,116 @@
                     <span class="map-pin map-pin-moderate pin-three" data-map-centre="Sheti Seva Kendra, Nashik" aria-hidden="true"></span>
                     <span class="map-pin map-pin-normal pin-four" data-map-centre="Kisan Suvidha Centre, Karnal" aria-hidden="true"></span>
                     <span class="map-pin map-pin-busy pin-five" data-map-centre="Krishi Bazaar Centre, Jaipur" aria-hidden="true"></span>
-                    <div class="map-label">India procurement network</div>
+                    <div class="map-label" data-i18n="mapLabel">India procurement network</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-section" id="how-it-works">
+            <div class="how-container">
+                <div class="how-heading">
+                    <p class="section-eyebrow" data-i18n="howEyebrow">Simple steps to sell your crop</p>
+                    <h2 data-i18n="howHeading">How Kisanसेतु works</h2>
+                </div>
+                <div class="how-steps">
+                    <article class="how-step">
+                        <span class="step-number">01</span>
+                        <div>
+                            <h3 data-i18n="stepRegister">Register</h3>
+                            <p data-i18n="stepRegisterHelp">Create your profile and verify your details</p>
+                        </div>
+                    </article>
+                    <article class="how-step">
+                        <span class="step-number">02</span>
+                        <div>
+                            <h3 data-i18n="stepBook">Book slot</h3>
+                            <p data-i18n="stepBookHelp">Choose a centre, date, and time slot</p>
+                        </div>
+                    </article>
+                    <article class="how-step">
+                        <span class="step-number">03</span>
+                        <div>
+                            <h3 data-i18n="stepQueue">Live queue</h3>
+                            <p data-i18n="stepQueueHelp">Track your queue in real time</p>
+                        </div>
+                    </article>
+                    <article class="how-step">
+                        <span class="step-number">04</span>
+                        <div>
+                            <h3 data-i18n="stepProcurement">Procurement</h3>
+                            <p data-i18n="stepProcurementHelp">Weighing, quality check, and procurement</p>
+                        </div>
+                    </article>
+                    <article class="how-step">
+                        <span class="step-number">05</span>
+                        <div>
+                            <h3 data-i18n="stepPayment">Payment</h3>
+                            <p data-i18n="stepPaymentHelp">Receive payment updates and confirmation</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="time-callout">
+                    <strong data-i18n="calloutFirst">Save time. Avoid long queues.</strong>
+                    <span data-i18n="calloutSecond">Get a better experience with Kisanसेतु.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about-us">
+            <div class="about-container">
+                <div class="about-copy">
+                    <p class="section-eyebrow" data-i18n="aboutEyebrow">Built for Indian farmers</p>
+                    <h2 data-i18n="aboutHeading">A simpler path from farm to payment</h2>
+                    <p data-i18n="aboutDescription">Kisanसेतु connects farmers with nearby procurement centres so every visit is planned, transparent, and easier to track.</p>
+                </div>
+                <div class="about-points">
+                    <div class="about-point"><span aria-hidden="true">&#10003;</span><strong data-i18n="aboutPointOne">Fair and transparent procurement</strong></div>
+                    <div class="about-point"><span aria-hidden="true">&#10003;</span><strong data-i18n="aboutPointTwo">Trusted updates at every step</strong></div>
+                    <div class="about-point"><span aria-hidden="true">&#10003;</span><strong data-i18n="aboutPointThree">Support when you need it</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-section" id="help">
+            <div class="help-container">
+                <div class="help-heading">
+                    <p class="section-eyebrow" data-i18n="helpEyebrow">We are here to help</p>
+                    <h2 data-i18n="helpHeading">Need help? Talk to us.</h2>
+                    <p data-i18n="helpDescription">Our support team can help with bookings, centre status, and payment updates.</p>
+                </div>
+                <div class="help-grid">
+                    <a class="help-card" href="tel:+911800123456">
+                        <span class="help-icon" aria-hidden="true">&#9742;</span>
+                        <span><strong data-i18n="helpPhone">Call us</strong><small>1800 123 456</small></span>
+                    </a>
+                    <a class="help-card" href="mailto:support@kisansetu.in">
+                        <span class="help-icon" aria-hidden="true">&#9993;</span>
+                        <span><strong data-i18n="helpEmail">Email support</strong><small>support@kisansetu.in</small></span>
+                    </a>
+                    <div class="help-card">
+                        <span class="help-icon" aria-hidden="true">&#128337;</span>
+                        <span><strong data-i18n="helpHours">Support hours</strong><small data-i18n="helpHoursValue">Mon - Sat, 9 AM - 6 PM</small></span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <a class="footer-brand" href="#home">Kisanसेतु</a>
+            <p data-i18n="footerTagline">Making crop procurement simpler for every farmer.</p>
+            <div class="footer-links">
+                <a href="#about-us" data-i18n="footerAbout">About us</a>
+                <a href="#help" data-i18n="footerHelp">Help centre</a>
+                <a href="#centres" data-i18n="footerCentres">Find a centre</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span data-i18n="copyright">© 2026 Kisanसेतु. All rights reserved.</span>
+            <span data-i18n="footerMade">Serving farmers across India</span>
+        </div>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>

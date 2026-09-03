@@ -3,6 +3,98 @@
     background: rgba(255, 255, 255, 0.94);
 }
 
+.hero-section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: min(680px, calc(100vh - 78px));
+    margin: 0;
+    padding: 64px max(24px, calc((100% - 1240px) / 2));
+    background-image: linear-gradient(90deg, rgba(7, 24, 17, 0.78) 0%, rgba(7, 24, 17, 0.55) 43%, rgba(7, 24, 17, 0.12) 100%), url('../assets/farmer.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-content {
+    max-width: 535px;
+    color: var(--white);
+}
+
+.hero-eyebrow {
+    margin: 0 0 18px;
+    color: #bde8c9;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    margin: 0;
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 700;
+    line-height: 1.04;
+}
+
+.hero-content h1 span {
+    color: #bde8c9;
+}
+
+.hero-description {
+    max-width: 470px;
+    margin: 25px 0 32px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    line-height: 1.65;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 22px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    color: var(--white);
+    background: var(--green);
+}
+
+.button-primary:hover {
+    background: var(--green-dark);
+}
+
+.button-secondary {
+    border-color: var(--green);
+    color: #101b16;
+    background: var(--white);
+}
+
+.button-secondary:hover {
+    color: var(--green-dark);
+    background: var(--mint);
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -186,6 +278,16 @@
 }
 
 @media (max-width: 800px) {
+    .hero-section {
+        min-height: auto;
+        padding: 58px 0 72px;
+        background-position: 62% center;
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
     .navbar {
         flex-wrap: wrap;
         gap: 0;
@@ -212,6 +314,25 @@
 @media (max-width: 460px) {
     .navbar {
         width: min(calc(100% - 28px), 1240px);
+    }
+
+    .hero-section {
+        padding-top: 44px;
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .hero-content h1 {
+        font-size: 43px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .hero-actions,
+    .button {
+        width: 100%;
     }
 
     .nav-links {

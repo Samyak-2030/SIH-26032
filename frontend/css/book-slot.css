@@ -278,6 +278,115 @@
     background: var(--green-dark);
 }
 
+.booking-confirmation {
+    padding: 20px 20px 4px;
+    text-align: center;
+}
+
+.confirmation-icon {
+    display: grid;
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 25px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--white);
+    background: #159447;
+    font-size: 48px;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(21, 148, 71, 0.2);
+}
+
+.booking-confirmation h2 {
+    margin: 0;
+    color: #159447;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(25px, 4vw, 34px);
+}
+
+.booking-id-label {
+    margin: 12px 0 42px;
+    color: #172333;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+}
+
+.booking-id-label strong {
+    letter-spacing: 1px;
+}
+
+.confirmation-details {
+    margin: 0 auto;
+    max-width: 570px;
+    text-align: left;
+}
+
+.confirmation-details div + div {
+    margin-top: 22px;
+}
+
+.confirmation-details dt {
+    color: #172333;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.confirmation-details dd {
+    margin: 7px 0 0;
+    color: #687785;
+    font-size: 15px;
+}
+
+.confirmation-note {
+    margin: 38px 0 38px;
+    padding: 18px 20px;
+    border: 1px solid #c6e0cc;
+    border-radius: 7px;
+    color: #344453;
+    background: #f0f9f1;
+    font-size: 15px;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.confirmation-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.confirm-dashboard,
+.view-details {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.confirm-dashboard {
+    color: var(--white);
+    background: #159447;
+}
+
+.confirm-dashboard:hover {
+    background: var(--green-dark);
+}
+
+.view-details {
+    border: 1px solid #9bcdaa;
+    color: var(--green);
+    background: var(--white);
+    cursor: pointer;
+}
+
+.view-details:hover {
+    background: #f0f9f1;
+}
+
 @media (max-width: 600px) {
     .booking-shell {
         padding: 20px 14px 45px;
@@ -307,5 +416,14 @@
 
     .choose-centre {
         width: 100%;
+    }
+
+    .booking-confirmation {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .confirmation-actions {
+        grid-template-columns: 1fr;
     }
 }

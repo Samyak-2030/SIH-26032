@@ -107,6 +107,21 @@
                 <p class="booking-message" id="booking-message" role="status" aria-live="polite"></p>
                 <button class="confirm-booking" type="submit">Confirm booking</button>
             </form>
+
+            <section class="booking-confirmation" id="booking-confirmation" aria-labelledby="confirmation-title" hidden>
+                <div class="confirmation-icon" aria-hidden="true">&#10003;</div>
+                <h2 id="confirmation-title">Slot Booked Successfully!</h2>
+                <p class="booking-id-label">Booking ID: <strong id="booking-id">BK-29382</strong></p>
+                <dl class="confirmation-details">
+                    <div><dt>Date &amp; time</dt><dd id="confirmation-datetime">12 Sept 2024, 10:00 AM - 11:00 AM</dd></div>
+                    <div><dt>Centre</dt><dd id="confirmation-centre">Centre A, Hisar</dd></div>
+                </dl>
+                <p class="confirmation-note">You will receive notifications about<br>your queue and updates.</p>
+                <div class="confirmation-actions">
+                    <a class="confirm-dashboard" href="farmer-dashboard.html">Go to Dashboard</a>
+                    <button class="view-details" id="view-booking-details" type="button">View Booking Details</button>
+                </div>
+            </section>
         </section>
     </main>
 

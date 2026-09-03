@@ -1,0 +1,220 @@
+.site-header {
+    border-bottom: 1px solid rgba(219, 232, 222, 0.9);
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+    width: min(1180px, calc(100% - 48px));
+    min-height: 78px;
+    margin: 0 auto;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.brand-mark {
+    display: grid;
+    width: 35px;
+    height: 35px;
+    place-items: center;
+    border-radius: 10px 10px 10px 3px;
+    color: var(--white);
+    background: var(--green);
+    font-size: 18px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: auto;
+}
+
+.nav-link {
+    position: relative;
+    padding: 29px 0 27px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+.nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: var(--green);
+    content: '';
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--green);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.login-menu {
+    position: relative;
+}
+
+.login-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 42px;
+    padding: 0 17px;
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    color: var(--green-dark);
+    background: var(--white);
+    cursor: pointer;
+    font: 600 14px 'DM Sans', sans-serif;
+    transition: color 160ms ease, background 160ms ease;
+}
+
+.login-button:hover,
+.login-button[aria-expanded='true'] {
+    color: var(--white);
+    background: var(--green);
+}
+
+.chevron {
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 160ms ease;
+}
+
+.login-button[aria-expanded='true'] .chevron {
+    transform: rotate(225deg) translate(-1px, -1px);
+}
+
+.login-options {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 270px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 16px 36px rgba(25, 53, 45, 0.13);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.login-options.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.login-options a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 10px;
+    border-radius: 7px;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.login-options a:hover,
+.login-options a:focus-visible {
+    outline: none;
+    background: var(--mint);
+}
+
+.option-icon {
+    display: grid;
+    flex: 0 0 31px;
+    width: 31px;
+    height: 31px;
+    place-items: center;
+    border-radius: 7px;
+    color: var(--green);
+    background: var(--mint);
+    font-size: 15px;
+}
+
+.login-options strong,
+.login-options small {
+    display: block;
+}
+
+.login-options strong {
+    font-size: 13px;
+}
+
+.login-options small {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 0;
+        padding: 17px 0;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 15px 0 0;
+        overflow-x: auto;
+    }
+
+    .nav-link {
+        padding: 5px 0 9px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 460px) {
+    .navbar {
+        width: min(calc(100% - 28px), 1180px);
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+    }
+
+    .login-options {
+        right: -4px;
+        width: min(270px, calc(100vw - 28px));
+    }
+}

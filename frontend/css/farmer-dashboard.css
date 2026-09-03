@@ -1,0 +1,362 @@
+.dashboard-page {
+    background: #f6f8fb;
+    color: #172333;
+}
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-sidebar {
+    display: flex;
+    flex: 0 0 250px;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 28px 16px 24px;
+    color: rgba(255, 255, 255, 0.78);
+    background: #101c29;
+}
+
+.dashboard-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 13px;
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.dashboard-brand-mark {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border-radius: 9px 9px 9px 3px;
+    color: var(--white);
+    background: var(--green);
+}
+
+.dashboard-nav {
+    display: grid;
+    gap: 5px;
+    margin-top: 42px;
+}
+
+.dashboard-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 13px;
+    border-radius: 8px;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 160ms ease, background 160ms ease;
+}
+
+.dashboard-nav-link > span {
+    display: grid;
+    width: 20px;
+    place-items: center;
+    color: #9fb2bd;
+    font-size: 16px;
+}
+
+.dashboard-nav-link:hover,
+.dashboard-nav-link.active {
+    color: var(--white);
+    background: #1b735d;
+}
+
+.dashboard-nav-link.active > span,
+.dashboard-nav-link:hover > span {
+    color: #b5efc6;
+}
+
+.logout-link {
+    margin-top: auto;
+}
+
+.dashboard-main {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    padding: 48px clamp(24px, 5vw, 70px) 70px;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.dashboard-eyebrow {
+    margin: 0 0 9px;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.12;
+}
+
+.dashboard-header h1 span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72em;
+}
+
+.dashboard-header > div > p:last-child {
+    margin: 10px 0 0;
+    color: #697887;
+    font-size: 15px;
+}
+
+.dashboard-user-tools {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.dashboard-language {
+    padding: 8px 10px;
+    border: 1px solid #d5e0e5;
+    border-radius: 6px;
+    color: #49606c;
+    background: var(--white);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.user-avatar {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 3px solid #b8e3c3;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--green);
+    font-weight: 700;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1.35fr repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 42px;
+}
+
+.overview-card,
+.quick-action,
+.notifications-section {
+    border: 1px solid #e0e7eb;
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 5px 18px rgba(35, 52, 64, 0.04);
+}
+
+.overview-card {
+    display: flex;
+    min-height: 148px;
+    flex-direction: column;
+    gap: 9px;
+    padding: 22px 19px;
+    color: #657482;
+    font-size: 14px;
+}
+
+.overview-card strong {
+    color: #172333;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+}
+
+.overview-card .card-label {
+    color: #657482;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.overview-card .success-text {
+    color: #19915b;
+}
+
+.dashboard-section {
+    margin-top: 38px;
+}
+
+.section-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.section-title-row h2 {
+    margin: 0;
+    color: #172333;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.section-title-row a {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 17px;
+}
+
+.quick-action {
+    display: flex;
+    min-height: 125px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    color: #334453;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.quick-action:hover {
+    border-color: #8fc8a2;
+    transform: translateY(-2px);
+}
+
+.quick-action-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: #3b75c3;
+    font-size: 22px;
+}
+
+.quick-action strong {
+    font-size: 14px;
+}
+
+.notifications-section {
+    padding: 22px 20px 16px;
+}
+
+.notification-list {
+    margin-top: 18px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    padding: 12px 4px;
+    color: #687785;
+    font-size: 14px;
+}
+
+.notification-item + .notification-item {
+    border-top: 1px solid #edf1f3;
+}
+
+.notification-item time {
+    flex: 0 0 96px;
+    color: #172333;
+    font-weight: 700;
+}
+
+.notification-item p {
+    margin: 0;
+}
+
+.notification-item strong {
+    color: #334453;
+}
+
+@media (max-width: 900px) {
+    .dashboard-sidebar {
+        flex-basis: 210px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-actions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard-layout {
+        display: block;
+    }
+
+    .dashboard-sidebar {
+        min-height: auto;
+        padding: 16px 14px;
+    }
+
+    .dashboard-nav {
+        display: flex;
+        gap: 4px;
+        margin-top: 18px;
+        overflow-x: auto;
+    }
+
+    .dashboard-nav-link {
+        flex: 0 0 auto;
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .dashboard-nav-link > span {
+        display: none;
+    }
+
+    .logout-link {
+        display: none;
+    }
+
+    .dashboard-main {
+        padding: 32px 14px 46px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+    }
+
+    .dashboard-user-tools {
+        align-self: flex-end;
+    }
+
+    .overview-grid,
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notification-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+}

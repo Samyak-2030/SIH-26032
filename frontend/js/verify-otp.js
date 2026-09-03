@@ -22,8 +22,7 @@ otpForm.addEventListener('submit', (event) => {
         return;
     }
 
-    otpMessage.classList.add('success');
-    otpMessage.textContent = 'OTP verified successfully.';
+    window.location.href = `farmer-dashboard.html?mobile=${encodeURIComponent(mobileNumber || '')}`;
 });
 
 resendButton.addEventListener('click', () => {

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard | Kisanसेतु</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/farmer-dashboard.css">
+</head>
+
+<body class="dashboard-page">
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <a class="dashboard-brand" href="../index.html#home">
+                <span class="dashboard-brand-mark" aria-hidden="true">K</span>
+                <span>Kisanसेतु</span>
+            </a>
+            <nav class="dashboard-nav" aria-label="Farmer dashboard navigation">
+                <a class="dashboard-nav-link active" href="#dashboard"><span aria-hidden="true">&#9634;</span>Dashboard</a>
+                <a class="dashboard-nav-link" href="book-slot.html"><span aria-hidden="true">&#128203;</span>Book Slot</a>
+                <a class="dashboard-nav-link" href="#live-queue"><span aria-hidden="true">&#9201;</span>Live Queue</a>
+                <a class="dashboard-nav-link" href="#procurement"><span aria-hidden="true">&#9878;</span>Procurement</a>
+                <a class="dashboard-nav-link" href="#payments"><span aria-hidden="true">&#8377;</span>Payments</a>
+                <a class="dashboard-nav-link" href="#bookings"><span aria-hidden="true">&#128197;</span>My Bookings</a>
+                <a class="dashboard-nav-link" href="#profile"><span aria-hidden="true">&#128100;</span>Profile</a>
+                <a class="dashboard-nav-link" href="#notifications"><span aria-hidden="true">&#128276;</span>Notifications</a>
+                <a class="dashboard-nav-link" href="#support"><span aria-hidden="true">&#9993;</span>Help &amp; Support</a>
+            </nav>
+            <a class="dashboard-nav-link logout-link" href="../index.html#home"><span aria-hidden="true">&#10140;</span>Logout</a>
+        </aside>
+
+        <main class="dashboard-main" id="dashboard">
+            <header class="dashboard-header">
+                <div>
+                    <p class="dashboard-eyebrow">Farmer dashboard</p>
+                    <h1>Hello, Rajesh <span aria-hidden="true">&#128075;</span></h1>
+                    <p>Here’s what’s happening with your procurement.</p>
+                </div>
+                <div class="dashboard-user-tools">
+                    <button class="dashboard-language" type="button">English <span aria-hidden="true">&#9662;</span></button>
+                    <span class="user-avatar" aria-label="Rajesh profile">R</span>
+                </div>
+            </header>
+
+            <section class="overview-grid" aria-label="Procurement overview">
+                <article class="overview-card next-slot-card">
+                    <span class="card-label">Next slot</span>
+                    <strong>12 Sept 2024</strong>
+                    <span>10:00 AM - 11:00 AM</span>
+                    <span>Centre A, Hisar</span>
+                </article>
+                <article class="overview-card">
+                    <span class="card-label">Your queue</span>
+                    <strong>#27</strong>
+                    <span>Est. wait 42 min</span>
+                </article>
+                <article class="overview-card">
+                    <span class="card-label">Procurement</span>
+                    <strong class="success-text">In progress</strong>
+                    <span>Weighing done</span>
+                </article>
+                <article class="overview-card">
+                    <span class="card-label">Payment</span>
+                    <strong>₹42,500</strong>
+                    <span>Processing</span>
+                </article>
+            </section>
+
+            <section class="dashboard-section quick-actions-section">
+                <div class="section-title-row">
+                    <h2>Quick actions</h2>
+                </div>
+                <div class="quick-actions-grid">
+                    <a class="quick-action" href="#live-queue"><span class="quick-action-icon" aria-hidden="true">&#9201;</span><strong>Live Queue</strong></a>
+                    <a class="quick-action" href="#procurement"><span class="quick-action-icon" aria-hidden="true">&#9878;</span><strong>Track Procurement</strong></a>
+                    <a class="quick-action" href="#bookings"><span class="quick-action-icon" aria-hidden="true">&#128197;</span><strong>My Bookings</strong></a>
+                    <a class="quick-action" href="#payments"><span class="quick-action-icon" aria-hidden="true">&#8377;</span><strong>Payment Details</strong></a>
+                </div>
+            </section>
+
+            <section class="dashboard-section notifications-section" id="notifications">
+                <div class="section-title-row">
+                    <h2>Recent notifications</h2>
+                    <a href="#notifications">View all</a>
+                </div>
+                <div class="notification-list">
+                    <div class="notification-item"><time>10:00 AM</time><p><strong>22 farmers</strong> ahead of you.</p></div>
+                    <div class="notification-item"><time>10:25 AM</time><p><strong>12 farmers</strong> ahead.</p></div>
+                    <div class="notification-item"><time>10:40 AM</time><p>Your turn is approaching. <strong>20 min</strong> away.</p></div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

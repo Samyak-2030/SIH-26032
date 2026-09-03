@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Slot | Kisanसेतु</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/book-slot.css">
+</head>
+
+<body class="booking-page">
+    <main class="booking-shell">
+        <header class="booking-topbar">
+            <a class="booking-brand" href="../index.html#home" aria-label="Return to Kisanसेतु home">
+                <span class="booking-brand-mark" aria-hidden="true">K</span>
+                <span>Kisanसेतु</span>
+            </a>
+            <a class="back-dashboard" href="farmer-dashboard.html">&#8592; Back to dashboard</a>
+        </header>
+
+        <section class="booking-card" aria-labelledby="booking-title">
+            <div class="booking-heading">
+                <p class="booking-eyebrow">Plan your visit</p>
+                <h1 id="booking-title">Book Procurement Slot</h1>
+                <p>Choose your preferred centre, date &amp; time.</p>
+            </div>
+
+            <form id="booking-form" novalidate>
+                <div class="booking-fields">
+                    <label>
+                        <span>Crop</span>
+                        <select id="crop-select">
+                            <option>Wheat</option>
+                            <option>Rice</option>
+                            <option>Mustard</option>
+                            <option>Cotton</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>District</span>
+                        <select id="district-select">
+                            <option>Hisar</option>
+                            <option>Indore</option>
+                            <option>Nashik</option>
+                            <option>Karnal</option>
+                        </select>
+                    </label>
+                </div>
+
+                <label class="search-centre-field">
+                    <span>Search centre</span>
+                    <span class="search-box">
+                        <input id="centre-search" type="search" placeholder="Search centre">
+                        <span aria-hidden="true">&#128269;</span>
+                    </span>
+                </label>
+
+                <div class="recommended-heading">
+                    <h2>Recommended centres</h2>
+                    <span id="centre-count">3 centres</span>
+                </div>
+                <div class="recommended-centres" id="recommended-centres">
+                    <article class="recommended-centre selected" data-centre="Centre A" data-district="Hisar">
+                        <div class="centre-details">
+                            <strong>Centre A <span class="recommended-tag">(Recommended)</span></strong>
+                            <div><span>Distance: 4.2 km</span><span>Queue: 18</span><span>Est. wait: 20 min</span></div>
+                        </div>
+                        <button class="choose-centre" type="button">Book slot</button>
+                    </article>
+                    <article class="recommended-centre" data-centre="Centre B" data-district="Hisar">
+                        <div class="centre-details">
+                            <strong>Centre B</strong>
+                            <div><span>Distance: 2.1 km</span><span>Queue: 27</span><span>Est. wait: 35 min</span></div>
+                        </div>
+                        <button class="choose-centre" type="button">Book slot</button>
+                    </article>
+                    <article class="recommended-centre" data-centre="Centre C" data-district="Hisar">
+                        <div class="centre-details">
+                            <strong>Centre C</strong>
+                            <div><span>Distance: 7.4 km</span><span>Queue: 31</span><span>Est. wait: 50 min</span></div>
+                        </div>
+                        <button class="choose-centre" type="button">Book slot</button>
+                    </article>
+                </div>
+                <p class="no-centres" id="no-centres" hidden>No centres found.</p>
+
+                <h2 class="date-heading">Select date &amp; time slot</h2>
+                <div class="booking-fields date-fields">
+                    <label>
+                        <span>Date</span>
+                        <select id="date-select">
+                            <option>12 Sept 2024</option>
+                            <option>13 Sept 2024</option>
+                            <option>14 Sept 2024</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Time slot</span>
+                        <select id="time-select">
+                            <option>10:00 AM - 11:00 AM</option>
+                            <option>11:00 AM - 12:00 PM</option>
+                            <option>2:00 PM - 3:00 PM</option>
+                        </select>
+                    </label>
+                </div>
+                <p class="booking-message" id="booking-message" role="status" aria-live="polite"></p>
+                <button class="confirm-booking" type="submit">Confirm booking</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="../js/book-slot.js"></script>
+</body>
+
+</html>

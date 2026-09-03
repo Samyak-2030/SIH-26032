@@ -1,6 +1,6 @@
 .site-header {
-    border-bottom: 1px solid rgba(219, 232, 222, 0.9);
-    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid var(--nav-line);
+    background: var(--nav-surface);
 }
 
 .hero-section {
@@ -81,7 +81,7 @@
     text-align: left;
 }
 
-.stat-item + .stat-item {
+.stat-item+.stat-item {
     border-left: 1px solid var(--line);
 }
 
@@ -154,6 +154,80 @@
 .button-secondary:hover {
     color: var(--green-dark);
     background: var(--mint);
+}
+
+.reasons-section {
+    padding: 72px 24px 82px;
+    background: var(--nav-surface);
+    color: #101b16;
+}
+
+.reasons-container {
+    width: min(1240px, 100%);
+    margin: 0 auto;
+}
+
+.reasons-heading {
+    text-align: center;
+}
+
+.section-eyebrow {
+    margin: 0 0 12px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.reasons-heading h2 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+}
+
+.reasons-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 48px;
+}
+
+.reason-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    min-width: 0;
+    padding: 8px 28px;
+}
+
+.reason-item + .reason-item {
+    border-left: 1px solid rgba(25, 53, 45, 0.18);
+}
+
+.reason-icon {
+    display: grid;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 10px;
+    color: var(--white);
+    background: var(--green);
+    font-size: 20px;
+}
+
+.reason-item h3 {
+    margin: 2px 0 7px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.reason-item p {
+    margin: 0;
+    color: #47584f;
+    font-size: 14px;
+    line-height: 1.45;
 }
 
 .navbar {
@@ -349,6 +423,20 @@
         max-width: 760px;
     }
 
+    .reasons-section {
+        padding-top: 58px;
+        padding-bottom: 64px;
+    }
+
+    .reasons-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 28px;
+    }
+
+    .reason-item:nth-child(3) {
+        border-left: 0;
+    }
+
     .navbar {
         flex-wrap: wrap;
         gap: 0;
@@ -389,6 +477,23 @@
 
     .hero-description {
         font-size: 16px;
+    }
+
+    .reasons-section {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .reasons-list {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-top: 34px;
+    }
+
+    .reason-item,
+    .reason-item:nth-child(3) {
+        padding: 0;
+        border-left: 0;
     }
 
     .hero-stats {

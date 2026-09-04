@@ -3,13 +3,16 @@ const loginOptions = document.querySelector('.login-options');
 const tollFreeStrip = document.querySelector('#toll-free-strip');
 const closeTollFree = document.querySelector('#close-toll-free');
 
-if (localStorage.getItem('kisansetu-hide-toll-free') === 'true') {
-    tollFreeStrip.hidden = true;
+localStorage.removeItem('kisansetu-hide-toll-free');
+
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
 }
+
+window.scrollTo(0, 0);
 
 closeTollFree.addEventListener('click', () => {
     tollFreeStrip.hidden = true;
-    localStorage.setItem('kisansetu-hide-toll-free', 'true');
 });
 
 function setLoginMenu(open) {

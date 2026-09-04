@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Queue | Kisanसेतु</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/live-queue.css">
+</head>
+
+<body class="queue-page">
+    <main class="queue-shell">
+        <header class="queue-topbar">
+            <a class="queue-brand" href="../index.html#home">
+                <span class="queue-brand-mark" aria-hidden="true">K</span>
+                <span>Kisanसेतु</span>
+            </a>
+            <a class="back-dashboard" href="farmer-dashboard.html">&#8592; Back to dashboard</a>
+        </header>
+
+        <section class="queue-section" aria-labelledby="queue-title">
+            <div class="queue-heading">
+                <p class="queue-eyebrow">09. Live queue</p>
+                <h1 id="queue-title">Live Queue - Centre A</h1>
+                <p>Real-time queue status</p>
+            </div>
+
+            <div class="queue-card">
+                <div class="serving-block">
+                    <span class="queue-label">Currently serving</span>
+                    <strong>Token #103</strong>
+                </div>
+                <div class="your-token-block">
+                    <div>
+                        <span class="queue-label">Your token</span>
+                        <strong>#127</strong>
+                    </div>
+                    <strong class="centre-name">Centre A</strong>
+                </div>
+                <div class="queue-metrics">
+                    <div>
+                        <span class="queue-label">Farmers ahead</span>
+                        <strong>23</strong>
+                    </div>
+                    <div>
+                        <span class="queue-label">Estimated waiting time</span>
+                        <strong>42 minutes</strong>
+                    </div>
+                </div>
+                <div class="queue-progress" aria-label="Queue progress: 23 farmers ahead">
+                    <div class="queue-progress-fill"></div>
+                </div>
+                <div class="queue-progress-labels"><span>Now</span><span>Your turn</span></div>
+
+                <div class="notify-row">
+                    <span>Notify me when my turn is near</span>
+                    <label class="switch">
+                        <input id="notify-toggle" type="checkbox" checked>
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="queue-footer">
+                <span>Last updated: <strong id="last-updated">10:25 AM</strong></span>
+                <span>Auto refresh in <strong id="refresh-countdown">30</strong> sec</span>
+            </div>
+            <p class="queue-message" id="queue-message" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <script src="../js/live-queue.js"></script>
+</body>
+
+</html>

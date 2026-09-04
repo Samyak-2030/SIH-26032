@@ -16,6 +16,10 @@
     text-align: center;
 }
 
+.toll-free-strip[hidden] {
+    display: none;
+}
+
 .toll-free-strip a {
     color: var(--green-dark);
     font-weight: 700;

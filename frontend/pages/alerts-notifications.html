@@ -1,1 +1,54 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Alerts &amp; Notifications | Kisanसेतु</title><link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/admin.css"></head><body class="admin-page"><div class="admin-layout"><aside class="admin-sidebar"><a class="admin-brand" href="admin-dashboard.html"><span class="admin-brand-mark">K</span>Kisanसेतु</a><nav class="admin-nav"><a href="admin-dashboard.html"><span>◫</span>Overview</a><a href="centre-management.html"><span>▦</span>Centre Management</a><a href="live-centre-monitoring.html"><span>◉</span>Live Monitoring</a><a href="queue-management.html"><span>◷</span>Queue Management</a><a href="reports-analytics.html"><span>▤</span>Reports &amp; Analytics</a><a class="active" href="alerts-notifications.html"><span>!</span>Alerts</a></nav></aside><main class="admin-main"><header class="admin-heading"><div><p class="admin-kicker">A7. Alerts &amp; notifications</p><h1>Alerts</h1><p>Important alerts and notifications</p></div><button class="admin-action" id="clear-alerts" type="button">Clear all alerts</button></header><section class="admin-panel admin-full-panel" id="alerts-list"><div class="admin-notice"><span class="admin-notice-icon">⚠</span><p>Centre 17 - 92% capacity<small>Requires monitoring</small></p><button class="admin-dismiss" type="button">×</button></div><div class="admin-notice"><span class="admin-notice-icon">⚠</span><p>Centre 24 - Queue increasing rapidly<small>Queue threshold exceeded</small></p><button class="admin-dismiss" type="button">×</button></div><div class="admin-notice"><span class="admin-notice-icon">◷</span><p>Centre 31 - Payment pending for 23 farmers<small>Payment follow-up required</small></p><button class="admin-dismiss" type="button">×</button></div><div class="admin-notice"><span class="admin-notice-icon">◉</span><p>Centre 05 - Large number of cancellations<small>Review centre activity</small></p><button class="admin-dismiss" type="button">×</button></div></section></main></div><script>document.querySelectorAll('.admin-dismiss').forEach(button=>button.addEventListener('click',()=>button.parentElement.remove()));document.querySelector('#clear-alerts').addEventListener('click',()=>document.querySelector('#alerts-list').innerHTML='<p class="admin-panel-subtitle">All alerts have been cleared.</p>');</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts &amp; Notifications | Kisanसेतु</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+    <div class="admin-layout">
+        <aside class="admin-sidebar"><a class="admin-brand" href="admin-dashboard.html"><span
+                    class="admin-brand-mark">K</span>Kisanसेतु</a>
+            <nav class="admin-nav"><a href="admin-dashboard.html"><span>◫</span>Overview</a><a
+                    href="centre-management.html"><span>▦</span>Centre Management</a><a
+                    href="live-centre-monitoring.html"><span>◉</span>Live Monitoring</a><a
+                    href="queue-management.html"><span>◷</span>Queue Management</a><a
+                    href="reports-analytics.html"><span>▤</span>Reports &amp; Analytics</a><a class="active"
+                    href="alerts-notifications.html"><span>!</span>Alerts</a></nav>
+        </aside>
+        <main class="admin-main">
+            <header class="admin-heading">
+                <div>
+                    <p class="admin-kicker">A7. Alerts &amp; notifications</p>
+                    <h1>Alerts</h1>
+                    <p>Important alerts and notifications</p>
+                </div><button class="admin-action" id="clear-alerts" type="button">Clear all alerts</button>
+            </header>
+            <section class="admin-panel admin-full-panel" id="alerts-list">
+                <div class="admin-notice"><span class="admin-notice-icon">⚠</span>
+                    <p>Centre 17 - 92% capacity<small>Requires monitoring</small></p><button class="admin-dismiss"
+                        type="button">×</button>
+                </div>
+                <div class="admin-notice"><span class="admin-notice-icon">⚠</span>
+                    <p>Centre 24 - Queue increasing rapidly<small>Queue threshold exceeded</small></p><button
+                        class="admin-dismiss" type="button">×</button>
+                </div>
+                <div class="admin-notice"><span class="admin-notice-icon">◷</span>
+                    <p>Centre 31 - Payment pending for 23 farmers<small>Payment follow-up required</small></p><button
+                        class="admin-dismiss" type="button">×</button>
+                </div>
+                <div class="admin-notice"><span class="admin-notice-icon">◉</span>
+                    <p>Centre 05 - Large number of cancellations<small>Review centre activity</small></p><button
+                        class="admin-dismiss" type="button">×</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>document.querySelectorAll('.admin-dismiss').forEach(button => button.addEventListener('click', () => button.parentElement.remove())); document.querySelector('#clear-alerts').addEventListener('click', () => document.querySelector('#alerts-list').innerHTML = '<p class="admin-panel-subtitle">All alerts have been cleared.</p>');</script>
+</body>
+
+</html>

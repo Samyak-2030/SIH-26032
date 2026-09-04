@@ -1,5 +1,16 @@
 const loginButton = document.querySelector('.login-button');
 const loginOptions = document.querySelector('.login-options');
+const tollFreeStrip = document.querySelector('#toll-free-strip');
+const closeTollFree = document.querySelector('#close-toll-free');
+
+if (localStorage.getItem('kisansetu-hide-toll-free') === 'true') {
+    tollFreeStrip.hidden = true;
+}
+
+closeTollFree.addEventListener('click', () => {
+    tollFreeStrip.hidden = true;
+    localStorage.setItem('kisansetu-hide-toll-free', 'true');
+});
 
 function setLoginMenu(open) {
     loginButton.setAttribute('aria-expanded', String(open));
@@ -86,7 +97,7 @@ const translations = {
         allStates: 'All states', tableCentre: 'Centre name', tableDistrict: 'District', tableWaiting: 'Farmers waiting',
         tableTime: 'Waiting time', tableStatus: 'Status', normal: 'Normal', moderate: 'Moderate', busy: 'Busy',
         noResults: 'No centres match your search.', viewMap: 'View on map', selectCentre: 'Select a centre to view its location',
-        mapLabel: 'India procurement network', howEyebrow: 'Simple steps to sell your crop', howHeading: 'How Kisanसेतु works',
+        mapLabel: 'India procurement network', tollFreeLabel: 'Kisan toll-free helpline', howEyebrow: 'Simple steps to sell your crop', howHeading: 'How Kisanसेतु works',
         stepRegister: 'Register', stepRegisterHelp: 'Create your profile and verify your details', stepBook: 'Book slot',
         stepBookHelp: 'Choose a centre, date, and time slot', stepQueue: 'Live queue', stepQueueHelp: 'Track your queue in real time',
         stepProcurement: 'Procurement', stepProcurementHelp: 'Weighing, quality check, and procurement', stepPayment: 'Payment',
@@ -118,7 +129,7 @@ const translations = {
         allStates: 'सभी राज्य', tableCentre: 'केंद्र का नाम', tableDistrict: 'जिला', tableWaiting: 'प्रतीक्षारत किसान',
         tableTime: 'प्रतीक्षा समय', tableStatus: 'स्थिति', normal: 'सामान्य', moderate: 'मध्यम', busy: 'व्यस्त',
         noResults: 'आपकी खोज से कोई केंद्र नहीं मिला।', viewMap: 'मानचित्र पर देखें', selectCentre: 'स्थान देखने के लिए केंद्र चुनें',
-        mapLabel: 'भारत खरीद नेटवर्क', howEyebrow: 'अपनी फसल बेचने के सरल चरण', howHeading: 'Kisanसेतु कैसे काम करता है',
+        mapLabel: 'भारत खरीद नेटवर्क', tollFreeLabel: 'किसान टोल-फ्री हेल्पलाइन', howEyebrow: 'अपनी फसल बेचने के सरल चरण', howHeading: 'Kisanसेतु कैसे काम करता है',
         stepRegister: 'पंजीकरण करें', stepRegisterHelp: 'अपनी प्रोफ़ाइल बनाएं और विवरण सत्यापित करें', stepBook: 'स्लॉट बुक करें',
         stepBookHelp: 'केंद्र, तारीख और समय स्लॉट चुनें', stepQueue: 'लाइव कतार', stepQueueHelp: 'अपनी कतार को रियल टाइम में ट्रैक करें',
         stepProcurement: 'खरीद', stepProcurementHelp: 'तौल, गुणवत्ता जांच और खरीद', stepPayment: 'भुगतान',

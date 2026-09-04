@@ -1,0 +1,247 @@
+.tracking-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e8f2f3 0%, #f7fbf6 52%, #dcebdc 100%);
+    color: #172333;
+}
+
+.tracking-shell {
+    width: min(100%, 900px);
+    margin: 0 auto;
+    padding: 28px 24px 70px;
+}
+
+.tracking-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tracking-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tracking-brand-mark {
+    display: grid;
+    width: 35px;
+    height: 35px;
+    place-items: center;
+    border-radius: 10px 10px 10px 3px;
+    color: var(--white);
+    background: var(--green);
+}
+
+.back-dashboard {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tracking-section {
+    margin-top: 52px;
+}
+
+.tracking-eyebrow {
+    margin: 0 0 10px;
+    color: #3b35a5;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tracking-heading h1 {
+    margin: 0;
+    color: #172333;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(30px, 4vw, 42px);
+}
+
+.tracking-heading > p:last-child {
+    margin: 10px 0 28px;
+    color: #687785;
+    font-size: 16px;
+}
+
+.tracking-card {
+    padding: 34px 40px 30px;
+    border: 2px solid #8e8add;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 42px rgba(35, 35, 100, 0.09);
+}
+
+.tracking-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e4e5f0;
+}
+
+.tracking-summary span,
+.tracking-summary strong {
+    display: block;
+}
+
+.tracking-summary span {
+    margin-bottom: 7px;
+    color: #687785;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tracking-summary strong {
+    color: #172333;
+    font-size: 14px;
+}
+
+.progress-timeline {
+    position: relative;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.progress-timeline::before {
+    position: absolute;
+    top: 21px;
+    bottom: 21px;
+    left: 20px;
+    width: 3px;
+    background: #e0e4e8;
+    content: '';
+}
+
+.timeline-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    min-height: 78px;
+}
+
+.timeline-marker {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    color: #7d8b95;
+    background: #e0e4e8;
+    box-shadow: 0 0 0 1px #d9dfe3;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.timeline-step.completed .timeline-marker,
+.timeline-step.current .timeline-marker {
+    color: var(--white);
+    background: #159447;
+    box-shadow: 0 0 0 1px #159447;
+}
+
+.timeline-step.current .timeline-marker {
+    font-size: 25px;
+    line-height: 0;
+}
+
+.timeline-step.completed::after,
+.timeline-step.current::after {
+    position: absolute;
+    top: 21px;
+    bottom: -21px;
+    left: 20px;
+    width: 3px;
+    background: #159447;
+    content: '';
+}
+
+.timeline-step:last-child::after {
+    display: none;
+}
+
+.timeline-step h2 {
+    margin: 3px 0 7px;
+    color: #172333;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+}
+
+.timeline-step p {
+    margin: 0;
+    color: #687785;
+    font-size: 14px;
+}
+
+.timeline-step.current h2,
+.timeline-step.current p {
+    color: #3154a3;
+}
+
+.timeline-step.upcoming h2 {
+    color: #667583;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.timeline-step.upcoming p {
+    font-size: 13px;
+}
+
+.tracking-note {
+    margin-top: 24px;
+    padding: 16px 18px;
+    border: 1px solid #c6e0cc;
+    border-radius: 7px;
+    color: #346048;
+    background: #f0f9f1;
+    font-size: 13px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .tracking-shell {
+        padding: 20px 14px 45px;
+    }
+
+    .tracking-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .tracking-section {
+        margin-top: 36px;
+    }
+
+    .tracking-card {
+        padding: 26px 20px 24px;
+    }
+
+    .tracking-summary {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .timeline-step {
+        gap: 16px;
+    }
+
+    .timeline-step h2 {
+        font-size: 16px;
+    }
+}

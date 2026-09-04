@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details | Kisanसेतु</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/payment-details.css">
+</head>
+
+<body class="payment-page">
+    <main class="payment-shell">
+        <header class="payment-topbar">
+            <a class="payment-brand" href="../index.html#home">
+                <span class="payment-brand-mark" aria-hidden="true">K</span>
+                <span>Kisanसेतु</span>
+            </a>
+            <a class="back-dashboard" href="farmer-dashboard.html">&#8592; Back to dashboard</a>
+        </header>
+
+        <section class="payment-section" aria-labelledby="payment-title">
+            <div class="payment-heading">
+                <p class="payment-eyebrow">11. Payment details</p>
+                <h1 id="payment-title">Payment Details</h1>
+                <p>Track your payment status</p>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-detail-list">
+                    <div class="payment-detail amount-detail">
+                        <span>Procurement Amount</span>
+                        <strong>₹42,500</strong>
+                    </div>
+                    <div class="payment-detail">
+                        <span>Bill ID</span>
+                        <strong>BIL-29382</strong>
+                    </div>
+                    <div class="payment-detail">
+                        <span>Payment Status</span>
+                        <strong class="processing-status">Processing</strong>
+                    </div>
+                    <div class="payment-detail">
+                        <span>Expected Payment Date</span>
+                        <strong>16 Sept 2024</strong>
+                    </div>
+                </div>
+                <button class="history-button" id="history-button" type="button">View Transaction History</button>
+                <div class="history-message" id="history-message" role="status" aria-live="polite" hidden>
+                    No previous transactions found for this bill.
+                </div>
+                <div class="bank-note">Payment will be credited to your<br>bank account linked with Aadhaar.</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/payment-details.js"></script>
+</body>
+
+</html>

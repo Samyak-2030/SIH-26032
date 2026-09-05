@@ -97,7 +97,7 @@ form.addEventListener("submit", async function (event) {
 
         return;
     }
- 
+
 
     try {
         const response = await fetch(registrationEndpoint, {

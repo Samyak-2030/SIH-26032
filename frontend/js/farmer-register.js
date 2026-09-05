@@ -28,8 +28,9 @@ form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const registrationData = Object.fromEntries(formData.entries());
-    const { fullName, mobile, password, confirmPassword } = registrationData;
+    const formValues = Object.fromEntries(formData.entries());
+    const { confirmPassword, ...registrationData } = formValues;
+    const { fullName, mobile, password } = registrationData;
 
 
     // Validate mobile number
@@ -63,7 +64,7 @@ form.addEventListener("submit", async function (event) {
 
         return;
     }
-
+ 
 
     try {
         const response = await fetch(registrationEndpoint, {

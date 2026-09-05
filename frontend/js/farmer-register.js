@@ -1,6 +1,9 @@
 const form = document.getElementById("farmer-register-form");
 const message = document.getElementById("form-message");
 const registrationEndpoint = "/api/farmers/register";
+const passwordInput = document.getElementById("password");
+const confirmPasswordInput = document.getElementById("confirmPassword");
+const passwordMatchMessage = document.getElementById("password-match-message");
 
 
 // -----------------------------------------
@@ -18,6 +21,34 @@ mobileInput.addEventListener("input", function () {
     this.value = this.value.slice(0, 10);
 });
 
+document.querySelectorAll(".toggle-password").forEach(function (toggleButton) {
+    toggleButton.addEventListener("click", function () {
+        const input = document.getElementById(this.dataset.target);
+        const isPasswordHidden = input.type === "password";
+
+        input.type = isPasswordHidden ? "text" : "password";
+        this.setAttribute("aria-pressed", String(isPasswordHidden));
+        this.setAttribute(
+            "aria-label",
+            `${isPasswordHidden ? "Hide" : "Show"} ${input.id === "password" ? "password" : "confirmed password"}`
+        );
+    });
+});
+
+function validatePasswords() {
+    const passwordsMatch = passwordInput.value === confirmPasswordInput.value;
+    const hasConfirmation = confirmPasswordInput.value.length > 0;
+
+    passwordMatchMessage.textContent =
+        !passwordsMatch && hasConfirmation ? "Passwords do not match." : "";
+    confirmPasswordInput.setCustomValidity(
+        !passwordsMatch && hasConfirmation ? "Passwords do not match." : ""
+    );
+}
+
+passwordInput.addEventListener("input", validatePasswords);
+confirmPasswordInput.addEventListener("input", validatePasswords);
+
 
 // -----------------------------------------
 // Form submission
@@ -31,6 +62,8 @@ form.addEventListener("submit", async function (event) {
     const formValues = Object.fromEntries(formData.entries());
     const { confirmPassword, ...registrationData } = formValues;
     const { fullName, mobile, password } = registrationData;
+
+    validatePasswords();
 
 
     // Validate mobile number

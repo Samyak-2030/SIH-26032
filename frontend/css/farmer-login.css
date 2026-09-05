@@ -99,6 +99,49 @@
     overflow: hidden;
 }
 
+.login-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 14px;
+    border: 1px solid #c7d6ca;
+    border-radius: 7px;
+    outline: 0;
+    color: #101b16;
+    font-size: 14px;
+}
+
+.login-input:focus {
+    outline: 2px solid rgba(23, 107, 72, 0.22);
+    border-color: var(--green);
+}
+
+.password-label {
+    margin-top: 18px;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field .login-input {
+    padding-right: 48px;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+}
+
 .mobile-field:focus-within {
     outline: 2px solid rgba(23, 107, 72, 0.22);
     border-color: var(--green);

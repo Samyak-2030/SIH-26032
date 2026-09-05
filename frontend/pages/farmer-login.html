@@ -23,14 +23,19 @@
             <p class="login-intro">Welcome back! Please login to continue.</p>
 
             <form id="farmer-login-form" novalidate>
-                <label class="field-label" for="mobile-number">Mobile number</label>
-                <div class="mobile-field">
-                    <span aria-hidden="true">+91</span>
-                    <input id="mobile-number" name="mobile" type="tel" inputmode="numeric" autocomplete="tel"
-                        maxlength="10" placeholder="Enter your 10-digit mobile number" required>
+                <label class="field-label" for="login-identifier">Email or mobile number</label>
+                <input class="login-input" id="login-identifier" name="identifier" type="text"
+                    autocomplete="username" placeholder="Enter email or 10-digit mobile number" required>
+
+                <label class="field-label password-label" for="login-password">Password</label>
+                <div class="password-field">
+                    <input class="login-input" id="login-password" name="password" type="password"
+                        autocomplete="current-password" placeholder="Enter your password" required>
+                    <button class="toggle-password" type="button" aria-label="Show password"
+                        aria-pressed="false">&#128065;</button>
                 </div>
                 <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-                <button class="send-otp-button" type="submit">Send OTP</button>
+                <button class="send-otp-button" type="submit">Login</button>
             </form>
 
             <p class="register-prompt">New farmer? <a href="register-farmer.html">Register as farmer</a></p>

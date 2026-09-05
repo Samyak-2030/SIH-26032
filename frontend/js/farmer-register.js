@@ -1,6 +1,6 @@
 const form = document.getElementById("farmer-register-form");
 const message = document.getElementById("form-message");
-const registrationEndpoint = "/api/farmers/register";
+const registrationEndpoint = "http://127.0.0.1:8000/api/farmers/register";
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const passwordMatchMessage = document.getElementById("password-match-message");
@@ -109,7 +109,10 @@ form.addEventListener("submit", async function (event) {
         });
 
         if (!response.ok) {
-            throw new Error("Registration request failed.");
+            const errorData = await response.json().catch(function () {
+                return {};
+            });
+            throw new Error(errorData.detail || "Registration request failed.");
         }
 
         // Successful registration
@@ -117,9 +120,11 @@ form.addEventListener("submit", async function (event) {
             `Registration successful. Welcome, ${fullName}!`;
 
         form.reset();
+        window.location.href = "farmer-login.html";
     } catch (error) {
-        message.textContent =
-            "Unable to complete registration. Please try again.";
+        message.textContent = error.message === "Failed to fetch"
+            ? "Cannot connect to the backend. Please start the FastAPI server."
+            : error.message;
         console.error("Farmer registration failed:", error);
     }
 });

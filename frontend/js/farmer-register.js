@@ -1,5 +1,6 @@
 const form = document.getElementById("farmer-register-form");
 const message = document.getElementById("form-message");
+const registrationEndpoint = "/api/farmers/register";
 
 
 // -----------------------------------------
@@ -22,15 +23,13 @@ mobileInput.addEventListener("input", function () {
 // Form submission
 // -----------------------------------------
 
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
-    const fullName = document.getElementById("fullName").value.trim();
-    const mobile = document.getElementById("mobile").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
+    const formData = new FormData(form);
+    const registrationData = Object.fromEntries(formData.entries());
+    const { fullName, mobile, password, confirmPassword } = registrationData;
 
 
     // Validate mobile number
@@ -66,10 +65,27 @@ form.addEventListener("submit", function (event) {
     }
 
 
-    // Successful registration
+    try {
+        const response = await fetch(registrationEndpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(registrationData)
+        });
 
-    message.textContent =
-        `Registration successful. Welcome, ${fullName}!`;
+        if (!response.ok) {
+            throw new Error("Registration request failed.");
+        }
 
-    form.reset();
+        // Successful registration
+        message.textContent =
+            `Registration successful. Welcome, ${fullName}!`;
+
+        form.reset();
+    } catch (error) {
+        message.textContent =
+            "Unable to complete registration. Please try again.";
+        console.error("Farmer registration failed:", error);
+    }
 });

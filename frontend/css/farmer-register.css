@@ -21,6 +21,23 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* Logo */
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+/* Header */
+
 .register-header {
     text-align: center;
     margin-bottom: 35px;
@@ -36,6 +53,8 @@ body {
     font-size: 16px;
 }
 
+/* Sections */
+
 .form-section {
     margin-bottom: 30px;
 }
@@ -46,6 +65,8 @@ body {
     padding-bottom: 10px;
     border-bottom: 1px solid #dce7df;
 }
+
+/* Form */
 
 .form-row {
     display: grid;
@@ -71,12 +92,22 @@ body {
     border-radius: 8px;
     font-size: 15px;
     outline: none;
+    background: white;
+    color: #183b2a;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     border-color: #18794e;
 }
+
+/* Dropdown */
+
+.form-group select {
+    cursor: pointer;
+}
+
+/* Button */
 
 .register-button {
     width: 100%;
@@ -94,12 +125,20 @@ body {
     background: #12633f;
 }
 
+/* Message */
+
 #form-message {
     margin-bottom: 15px;
     font-weight: 600;
 }
 
+/* Mobile */
+
 @media (max-width: 650px) {
+
+    body {
+        padding: 20px 12px;
+    }
 
     .register-container {
         padding: 25px;
@@ -113,4 +152,21 @@ body {
     .register-header h1 {
         font-size: 26px;
     }
+
+    .logo {
+        width: 75px;
+        height: 75px;
+    }
+
+    .brand-mark {
+    display: grid;
+    width: 35px;
+    height: 35px;
+    place-items: center;
+    border-radius: 10px 10px 10px 3px;
+    color: white;
+    background: #12633f;
+    font-size: 18px;
+    }
+
 }

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Farmer - Kisanसेतु</title>
+
+    <link rel="stylesheet" href="../css/farmer-register.css">
+</head>
+
+<body>
+
+    <div class="register-container">
+
+        <div class="register-header">
+            <h1>Register as a Farmer</h1>
+            <p>Join Kisanसेतु and simplify your crop procurement</p>
+        </div>
+
+        <form id="farmer-register-form">
+
+            <div class="form-section">
+                <h2>Personal Information</h2>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="10-digit mobile number"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h2>Farm Details</h2>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input
+                            type="text"
+                            id="state"
+                            name="state"
+                            placeholder="Enter your state"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <input
+                            type="text"
+                            id="district"
+                            name="district"
+                            placeholder="Enter your district"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="village">Village</label>
+                    <input
+                        type="text"
+                        id="village"
+                        name="village"
+                        placeholder="Enter your village"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="landArea">Land Area (in acres)</label>
+                        <input
+                            type="number"
+                            id="landArea"
+                            name="landArea"
+                            placeholder="e.g. 5"
+                            min="0.1"
+                            step="0.1"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="crop">Primary Crop</label>
+                        <select id="crop" name="crop" required>
+                            <option value="">Select crop</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="rice">Rice</option>
+                            <option value="maize">Maize</option>
+                            <option value="mustard">Mustard</option>
+                            <option value="cotton">Cotton</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-section">
+                <h2>Account Security</h2>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Confirm your password"
+                            required
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="form-message"></div>
+
+            <button type="submit" class="register-button">
+                Register as Farmer
+            </button>
+
+        </form>
+
+    </div>
+
+    <script src="../js/farmer-register.js"></script>
+
+</body>
+</html>

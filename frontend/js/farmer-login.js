@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', async (event) => {
             body: JSON.stringify({ identifier, password })
         });
         const data = await response.json().catch(() => ({}));
-
+        console.log("BOOKING RESPONSE:", data);
         if (!response.ok) {
             throw new Error(data.detail || 'Login failed.');
         }

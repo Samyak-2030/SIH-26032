@@ -360,3 +360,8 @@
         gap: 4px;
     }
 }
+
+#farmer-name {
+    font-size: inherit;
+    font-weight: inherit;
+}

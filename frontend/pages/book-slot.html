@@ -37,6 +37,7 @@
                             <option>Cotton</option>
                         </select>
                     </label>
+
                     <label>
                         <span>District</span>
                         <select id="district-select">
@@ -60,32 +61,49 @@
                     <h2>Recommended centres</h2>
                     <span id="centre-count">3 centres</span>
                 </div>
+
                 <div class="recommended-centres" id="recommended-centres">
                     <article class="recommended-centre selected" data-centre="Centre A" data-district="Hisar">
                         <div class="centre-details">
                             <strong>Centre A <span class="recommended-tag">(Recommended)</span></strong>
-                            <div><span>Distance: 4.2 km</span><span>Queue: 18</span><span>Est. wait: 20 min</span></div>
+                            <div>
+                                <span>Distance: 4.2 km</span>
+                                <span>Queue: 18</span>
+                                <span>Est. wait: 20 min</span>
+                            </div>
                         </div>
                         <button class="choose-centre" type="button">Book slot</button>
                     </article>
+
                     <article class="recommended-centre" data-centre="Centre B" data-district="Hisar">
                         <div class="centre-details">
                             <strong>Centre B</strong>
-                            <div><span>Distance: 2.1 km</span><span>Queue: 27</span><span>Est. wait: 35 min</span></div>
+                            <div>
+                                <span>Distance: 2.1 km</span>
+                                <span>Queue: 27</span>
+                                <span>Est. wait: 35 min</span>
+                            </div>
                         </div>
                         <button class="choose-centre" type="button">Book slot</button>
                     </article>
+
                     <article class="recommended-centre" data-centre="Centre C" data-district="Hisar">
                         <div class="centre-details">
                             <strong>Centre C</strong>
-                            <div><span>Distance: 7.4 km</span><span>Queue: 31</span><span>Est. wait: 50 min</span></div>
+                            <div>
+                                <span>Distance: 7.4 km</span>
+                                <span>Queue: 31</span>
+                                <span>Est. wait: 50 min</span>
+                            </div>
                         </div>
                         <button class="choose-centre" type="button">Book slot</button>
                     </article>
                 </div>
+
                 <p class="no-centres" id="no-centres" hidden>No centres found.</p>
 
                 <h2 class="date-heading">Select date &amp; time slot</h2>
+
                 <div class="booking-fields date-fields">
                     <label>
                         <span>Date</span>
@@ -95,6 +113,7 @@
                             <option>14 Sept 2024</option>
                         </select>
                     </label>
+
                     <label>
                         <span>Time slot</span>
                         <select id="time-select">
@@ -104,28 +123,58 @@
                         </select>
                     </label>
                 </div>
+
                 <p class="booking-message" id="booking-message" role="status" aria-live="polite"></p>
+
                 <button class="confirm-booking" type="submit">Confirm booking</button>
             </form>
 
             <section class="booking-confirmation" id="booking-confirmation" aria-labelledby="confirmation-title" hidden>
                 <div class="confirmation-icon" aria-hidden="true">&#10003;</div>
+
                 <h2 id="confirmation-title">Slot Booked Successfully!</h2>
-                <p class="booking-id-label">Booking ID: <strong id="booking-id">BK-29382</strong></p>
+
+                <p class="booking-id-label">
+                    Booking ID: <strong id="booking-id">BK-29382</strong>
+                </p>
+
                 <dl class="confirmation-details">
                     <div>
                         <dt>Date &amp; time</dt>
                         <dd id="confirmation-datetime">12 Sept 2024, 10:00 AM - 11:00 AM</dd>
                     </div>
+
                     <div>
                         <dt>Centre</dt>
                         <dd id="confirmation-centre">Centre A, Hisar</dd>
                     </div>
+
+                    <div>
+                        <dt>Queue token</dt>
+                        <dd id="confirmation-token">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Queue position</dt>
+                        <dd id="confirmation-position">-</dd>
+                    </div>
+
+                    <div>
+                        <dt>Estimated wait</dt>
+                        <dd id="confirmation-wait">-</dd>
+                    </div>
                 </dl>
-                <p class="confirmation-note">You will receive notifications about<br>your queue and updates.</p>
+
+                <p class="confirmation-note">
+                    You will receive notifications about<br>
+                    your queue and updates.
+                </p>
+
                 <div class="confirmation-actions">
                     <a class="confirm-dashboard" href="farmer-dashboard.html">Go to Dashboard</a>
-                    <button class="view-details" id="view-booking-details" type="button">View Booking Details</button>
+                    <button class="view-details" id="view-booking-details" type="button">
+                        View Booking Details
+                    </button>
                 </div>
             </section>
         </section>

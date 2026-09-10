@@ -1,16 +1,52 @@
+
+const API_BASE_URL = "http://127.0.0.1:8000";
+const token = localStorage.getItem("kisansetu-access-token");
+if (!token) {
+    window.location.href = "farmer-login.html";
+}
+async function loadFarmerProfile() {
+    try {
+        const response = await fetch(
+            `${API_BASE_URL}/api/farmers/me`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Unable to load farmer profile.");
+        }
+
+        const farmer = await response.json();
+
+        console.log(farmer);
+
+        document.querySelector("#farmer-name").textContent = farmer.fullName;
+
+        const avatar = document.querySelector("#user-avatar");
+        avatar.textContent = farmer.fullName.charAt(0).toUpperCase();
+        avatar.setAttribute("aria-label", `${farmer.fullName} profile`);
+
+    } catch (error) {
+        console.error(error);
+    }
+}
 const languageButton = document.querySelector('.dashboard-language');
 let currentLanguage = localStorage.getItem('kisansetu-language') || 'en';
 
 const dashboardTranslations = {
     en: {
-        language: 'हिन्दी', eyebrow: 'Farmer dashboard', greeting: 'Hello, Rajesh',
+        language: 'हिन्दी', eyebrow: 'Farmer dashboard', greeting: 'Hello,',
         description: 'Here’s what’s happening with your procurement.', nav: ['Dashboard', 'Book Slot', 'Live Queue', 'Procurement', 'Payments', 'My Bookings', 'Profile', 'Notifications', 'Help & Support', 'Logout'],
         nextSlot: 'Next slot', queue: 'Your queue', wait: 'Est. wait 42 min', procurement: 'Procurement', progress: 'In progress', weighing: 'Weighing done', payment: 'Payment', processing: 'Processing',
         quickActions: 'Quick actions', liveQueue: 'Live Queue', trackProcurement: 'Track Procurement', myBookings: 'My Bookings', paymentDetails: 'Payment Details',
         recent: 'Recent notifications', viewAll: 'View all', notifications: ['22 farmers ahead of you.', '12 farmers ahead.', 'Your turn is approaching. 20 min away.']
     },
     hi: {
-        language: 'English', eyebrow: 'किसान डैशबोर्ड', greeting: 'नमस्ते, राजेश',
+        language: 'English', eyebrow: 'किसान डैशबोर्ड', greeting: 'नमस्ते,',
         description: 'आपकी फसल खरीद से जुड़ी जानकारी यहां है।', nav: ['डैशबोर्ड', 'स्लॉट बुक करें', 'लाइव कतार', 'खरीद', 'भुगतान', 'मेरी बुकिंग', 'प्रोफ़ाइल', 'सूचनाएं', 'सहायता', 'लॉगआउट'],
         nextSlot: 'अगला स्लॉट', queue: 'आपकी कतार', wait: 'अनुमानित प्रतीक्षा 42 मिनट', procurement: 'खरीद', progress: 'जारी है', weighing: 'तौल पूरी हुई', payment: 'भुगतान', processing: 'प्रक्रिया में',
         quickActions: 'त्वरित कार्य', liveQueue: 'लाइव कतार', trackProcurement: 'खरीद ट्रैक करें', myBookings: 'मेरी बुकिंग', paymentDetails: 'भुगतान विवरण',
@@ -65,3 +101,4 @@ languageButton.addEventListener('click', () => {
 });
 
 applyDashboardLanguage(currentLanguage);
+loadFarmerProfile();

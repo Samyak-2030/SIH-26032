@@ -277,8 +277,14 @@
     place-items: center;
     border-radius: 10px;
     color: var(--white);
-    background: var(--green);
+    background:none;
     font-size: 20px;
+}
+
+.reason-icon img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
 }
 
 .reason-item h3 {

@@ -7,6 +7,7 @@
     <title>Centre Management | Kisanसेतु</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 
 <body class="admin-page">
@@ -28,7 +29,27 @@
                     <p>View and manage all procurement centres</p>
                 </div><a class="admin-action" href="#add-centre">+ Add New Centre</a>
             </header>
+            <section class="admin-panel admin-full-panel" id="add-centre">
+                <h2>Add a procurement centre</h2>
+                <p class="admin-panel-subtitle">New centres are published to the public and admin maps.</p>
+                <form id="add-centre-form">
+                    <div class="admin-form-row">
+                        <label>Centre name<input name="name" required placeholder="Government Procurement Centre - Narnaul"></label>
+                        <label>State<input name="state" value="Haryana" required></label>
+                        <label>District<input name="district" required placeholder="Narnaul"></label>
+                        <label>Location<input name="location" required placeholder="Narnaul City"></label>
+                        <label>Capacity per day<input name="capacity" type="number" min="1" required placeholder="400"></label>
+                        <label>Status<select name="status"><option>Active</option><option>Inactive</option></select></label>
+                        <label>Latitude<input name="latitude" type="number" step="any" min="-90" max="90" required placeholder="28.0445"></label>
+                        <label>Longitude<input name="longitude" type="number" step="any" min="-180" max="180" required placeholder="76.1084"></label>
+                    </div>
+                    <div class="admin-inline-actions"><button class="admin-action" type="submit">Add centre</button><span id="centre-form-message" role="status"></span></div>
+                </form>
+            </section>
             <section class="admin-panel admin-full-panel">
+                <h2>Haryana centre map</h2>
+                <p class="admin-panel-subtitle">Government and admin-managed procurement locations</p>
+                <div class="admin-map kisan-leaflet-map" aria-label="Haryana procurement centre map"></div>
                 <table class="admin-table">
                     <thead>
                         <tr>
@@ -40,7 +61,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="managed-centres">
                         <tr>
                             <td><strong>Centre A</strong></td>
                             <td>Hisar</td>
@@ -86,6 +107,9 @@
             </section>
         </main>
     </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/leaflet-maps.js"></script>
+    <script src="../js/centre-management.js"></script>
 </body>
 
 </html>

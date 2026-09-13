@@ -7,6 +7,7 @@
     <title>Kisanसेतु</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 
 <body>
@@ -243,16 +244,7 @@
                     <button class="map-button" type="button" id="view-map" data-i18n="viewMap">View on map</button>
                     <span id="selected-centre" data-i18n="selectCentre">Select a centre to view its location</span>
                 </div>
-                <div class="sample-map" id="sample-map" aria-label="Sample map of procurement centres" role="img">
-                    <div class="map-grid" aria-hidden="true"></div>
-                    <span class="map-road road-one" aria-hidden="true"></span>
-                    <span class="map-road road-two" aria-hidden="true"></span>
-                    <span class="map-pin map-pin-normal pin-one" data-map-centre="Kisan Seva Centre, Indore" aria-hidden="true"></span>
-                    <span class="map-pin map-pin-busy pin-two" data-map-centre="Annadatha Centre, Guntur" aria-hidden="true"></span>
-                    <span class="map-pin map-pin-moderate pin-three" data-map-centre="Sheti Seva Kendra, Nashik" aria-hidden="true"></span>
-                    <span class="map-pin map-pin-normal pin-four" data-map-centre="Kisan Suvidha Centre, Karnal" aria-hidden="true"></span>
-                    <span class="map-pin map-pin-busy pin-five" data-map-centre="Krishi Bazaar Centre, Jaipur" aria-hidden="true"></span>
-                    <div class="map-label" data-i18n="mapLabel">India procurement network</div>
+                <div class="sample-map kisan-leaflet-map" id="sample-map" aria-label="Map of Haryana procurement centres">
                 </div>
             </div>
         </section>
@@ -363,6 +355,8 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/leaflet-maps.js"></script>
     <script src="js/script.js"></script>
 </body>
 

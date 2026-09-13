@@ -72,7 +72,7 @@ statsObserver.observe(statsSection);
 
 const centreSearch = document.querySelector('#centre-search');
 const stateFilter = document.querySelector('#state-filter');
-const centreRows = [...document.querySelectorAll('#centre-table-body tr')];
+let centreRows = [...document.querySelectorAll('#centre-table-body tr')];
 const noResults = document.querySelector('.no-results');
 const selectedCentre = document.querySelector('#selected-centre');
 const sampleMap = document.querySelector('#sample-map');
@@ -202,6 +202,29 @@ mapButton.addEventListener('click', () => {
 
 focusCentre(centreRows[0]);
 
+async function loadLiveCentres() {
+    try {
+        const centres = await window.KisanSetuMaps.loadCentres();
+        const tableBody = document.querySelector('#centre-table-body');
+        tableBody.innerHTML = centres.map((centre) => `
+            <tr data-centre="${centre.name}" data-district="${centre.district}" data-state="${centre.state}"
+                data-waiting="Live status" data-status="normal">
+                <td><strong>${centre.name}</strong><small>${centre.location}</small></td>
+                <td>${centre.district}</td><td>-</td><td>Live status</td>
+                <td><span class="status status-normal">Active</span></td>
+            </tr>
+        `).join('');
+        centreRows = [...tableBody.querySelectorAll('tr')];
+        centreRows.forEach((row) => row.addEventListener('click', () => {
+            focusCentre(row);
+            sampleMap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }));
+        filterCentres();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const languageToggle = document.querySelector('.language-toggle');
 const languageOptions = languageToggle.querySelectorAll('.language-option');
 
@@ -234,3 +257,4 @@ languageToggle.addEventListener('click', () => {
 });
 
 applyLanguage(currentLanguage);
+loadLiveCentres();

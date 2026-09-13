@@ -54,7 +54,20 @@ class FarmerLogin(BaseModel):
 
 def initialize_database():
     with sqlite3.connect(DATABASE_PATH) as connection:
+        columns = {
+            row[1] for row in connection.execute("PRAGMA table_info(centres)")
+        }
+        if columns and "latitude" not in columns:
+            connection.execute("ALTER TABLE centres ADD COLUMN latitude REAL")
+        if columns and "longitude" not in columns:
+            connection.execute("ALTER TABLE centres ADD COLUMN longitude REAL")
         connection.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+        connection.execute(
+            "DELETE FROM centres WHERE id NOT IN (SELECT MIN(id) FROM centres GROUP BY name)"
+        )
+        connection.execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_centres_name ON centres(name)"
+        )
 
 
 def hash_password(password: str) -> str:
@@ -203,7 +216,8 @@ def get_centres():
 
         centres = connection.execute(
             """
-            SELECT id, name, state, district, location, capacity, status
+                 SELECT id, name, state, district, location, capacity, status,
+                     latitude, longitude
             FROM centres
             WHERE status = 'Active'
             ORDER BY name
@@ -213,6 +227,42 @@ def get_centres():
     return {
         "centres": [dict(centre) for centre in centres]
     }
+
+
+class CentreCreate(BaseModel):
+    name: str
+    state: str
+    district: str
+    location: str
+    capacity: int
+    latitude: float
+    longitude: float
+    status: str = "Active"
+
+
+@app.post("/api/centres", status_code=201)
+def create_centre(centre: CentreCreate):
+    if centre.capacity <= 0:
+        raise HTTPException(status_code=400, detail="Capacity must be greater than zero.")
+    if not -90 <= centre.latitude <= 90 or not -180 <= centre.longitude <= 180:
+        raise HTTPException(status_code=400, detail="Enter valid map coordinates.")
+
+    with sqlite3.connect(DATABASE_PATH) as connection:
+        cursor = connection.execute(
+            """
+            INSERT INTO centres (
+                name, state, district, location, capacity, status, latitude, longitude
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                centre.name.strip(), centre.state.strip(), centre.district.strip(),
+                centre.location.strip(), centre.capacity, centre.status,
+                centre.latitude, centre.longitude,
+            ),
+        )
+        centre_id = cursor.lastrowid
+
+    return {"centre": {"id": centre_id, **centre.model_dump()}}
 
 class BookingCreate(BaseModel):
     centre_id: int

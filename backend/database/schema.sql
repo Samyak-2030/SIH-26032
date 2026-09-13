@@ -38,7 +38,9 @@ CREATE TABLE IF NOT EXISTS centres (
     district TEXT NOT NULL,
     location TEXT NOT NULL,
     capacity INTEGER NOT NULL,
-    status TEXT NOT NULL DEFAULT 'Active'
+    status TEXT NOT NULL DEFAULT 'Active',
+    latitude REAL,
+    longitude REAL
 );
 
 INSERT OR IGNORE INTO centres
@@ -47,6 +49,19 @@ VALUES
     ('Kisan Seva Centre - Patna', 'Bihar', 'Patna', 'Danapur', 100, 'Active'),
     ('Kisan Seva Centre - Muzaffarpur', 'Bihar', 'Muzaffarpur', 'Muzaffarpur City', 80, 'Active'),
     ('Kisan Seva Centre - Gaya', 'Bihar', 'Gaya', 'Gaya City', 120, 'Active');
+
+INSERT OR IGNORE INTO centres
+    (name, state, district, location, capacity, status, latitude, longitude)
+VALUES
+    ('Government Procurement Centre - Ambala', 'Haryana', 'Ambala', 'Ambala City', 500, 'Active', 30.3782, 76.7767),
+    ('Government Procurement Centre - Bhiwani', 'Haryana', 'Bhiwani', 'Bhiwani City', 400, 'Active', 28.7930, 76.1398),
+    ('Government Procurement Centre - Hisar', 'Haryana', 'Hisar', 'Hisar City', 500, 'Active', 29.1492, 75.7217),
+    ('Government Procurement Centre - Karnal', 'Haryana', 'Karnal', 'Karnal City', 450, 'Active', 29.6857, 76.9905),
+    ('Government Procurement Centre - Kurukshetra', 'Haryana', 'Kurukshetra', 'Thanesar', 350, 'Active', 29.9695, 76.8783),
+    ('Government Procurement Centre - Rohtak', 'Haryana', 'Rohtak', 'Rohtak City', 400, 'Active', 28.8955, 76.6066),
+    ('Government Procurement Centre - Sirsa', 'Haryana', 'Sirsa', 'Sirsa City', 300, 'Active', 29.5349, 75.0289),
+    ('Government Procurement Centre - Sonipat', 'Haryana', 'Sonipat', 'Sonipat City', 450, 'Active', 28.9931, 77.0151),
+    ('Government Procurement Centre - Yamunanagar', 'Haryana', 'Yamunanagar', 'Yamunanagar City', 350, 'Active', 30.1290, 77.2674);
 
 CREATE TABLE IF NOT EXISTS bookings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

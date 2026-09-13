@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kisanसेतु</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="frontend/css/global.css">
+    <link rel="stylesheet" href="frontend/css/landing.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 
@@ -42,15 +42,15 @@
                     <span class="chevron" aria-hidden="true"></span>
                 </button>
                 <div class="login-options" id="login-options" role="menu">
-                    <a href="pages/farmer-login.html" role="menuitem">
+                    <a href="frontend/pages/farmer-login.html" role="menuitem">
                         <span class="option-icon" aria-hidden="true">&#127806;</span>
                         <span><strong data-i18n="farmerLogin">Farmer login</strong><small data-i18n="farmerLoginHelp">Access your farmer account</small></span>
                     </a>
-                    <a href="pages/admin-login.html" role="menuitem">
+                    <a href="frontend/pages/admin-login.html" role="menuitem">
                         <span class="option-icon" aria-hidden="true">&#128101;</span>
                         <span><strong data-i18n="adminLogin">Admin / govt login</strong><small data-i18n="adminLoginHelp">For administrators and officials</small></span>
                     </a>
-                    <a href="pages/farmer-register.html" role="menuitem">
+                    <a href="frontend/pages/farmer-register.html" role="menuitem">
                         <span class="option-icon" aria-hidden="true">&#43;</span>
                         <span><strong data-i18n="registerFarmer">Register as farmer</strong><small data-i18n="registerFarmerHelp">Join Kisanसेतु today</small></span>
                     </a>
@@ -67,8 +67,8 @@
                 <p class="hero-description" data-i18n="heroDescription">Book your slot, track queue in real time, and get updates on procurements
                     and payments.</p>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#book-procurement" data-i18n="bookSlot">Book procurement slot</a>
-                    <a class="button button-secondary" href="#centre-status" data-i18n="checkStatus">Check centre status</a>
+                    <a class="button button-primary" href="frontend/pages/book-slot.html" data-i18n="bookSlot">Book procurement slot</a>
+                    <a class="button button-secondary" href="#centres" data-i18n="checkStatus">Check centre status</a>
                 </div>
                 <div class="hero-stats" aria-label="Kisanसेतु platform statistics">
                     <div class="stat-item">
@@ -99,28 +99,28 @@
                 </div>
                 <div class="reasons-list">
                     <article class="reason-item">
-                        <span class="reason-icon" aria-hidden="true"><img src="assets/time.png" alt=""></span>
+                        <span class="reason-icon" aria-hidden="true"><img src="frontend/assets/time.png" alt=""></span>
                         <div>
                             <h3 data-i18n="saveTime">Save time</h3>
                             <p data-i18n="saveTimeHelp">Live queuing and slot booking</p>
                         </div>
                     </article>
                     <article class="reason-item">
-                        <span class="reason-icon" aria-hidden="true"><img src="assets/update.png" alt=""></span>
+                        <span class="reason-icon" aria-hidden="true"><img src="frontend/assets/update.png" alt=""></span>
                         <div>
                             <h3 data-i18n="liveUpdates">Real-time updates</h3>
                             <p data-i18n="liveUpdatesHelp">Get notified at every step</p>
                         </div>
                     </article>
                     <article class="reason-item">
-                        <span class="reason-icon" aria-hidden="true"><img src="assets/process.png" alt=""></span>
+                        <span class="reason-icon" aria-hidden="true"><img src="frontend/assets/process.png" alt=""></span>
                         <div>
                             <h3 data-i18n="transparent">Transparent process</h3>
                             <p data-i18n="transparentHelp">Track procurement and payment</p>
                         </div>
                     </article>
                     <article class="reason-item">
-                        <span class="reason-icon" aria-hidden="true"><img src="assets/centre.png" alt=""></span>
+                        <span class="reason-icon" aria-hidden="true"><img src="frontend/assets/centre.png" alt=""></span>
                         <div>
                             <h3 data-i18n="nearbyCentre">Nearby centre</h3>
                             <p data-i18n="nearbyCentreHelp">Find the best centre near you</p>
@@ -356,8 +356,8 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/leaflet-maps.js"></script>
-    <script src="js/script.js"></script>
+    <script src="frontend/js/leaflet-maps.js"></script>
+    <script src="frontend/js/script.js"></script>
 </body>
 
 </html>

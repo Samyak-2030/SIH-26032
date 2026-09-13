@@ -267,6 +267,10 @@
     background: #dcebdc
 }
 
+.admin-map + .admin-table {
+    margin-top: 20px
+}
+
 .admin-map-pin {
     position: absolute;
     width: 17px;

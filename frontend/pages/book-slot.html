@@ -7,6 +7,7 @@
     <title>Book Slot | Kisanसेतु</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/book-slot.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 
 <body class="booking-page">
@@ -56,6 +57,12 @@
                         <span aria-hidden="true">&#128269;</span>
                     </span>
                 </label>
+
+                <div class="booking-map-heading">
+                    <h2>Find a centre on the map</h2>
+                    <span>Select a marker, then use its Google Maps link</span>
+                </div>
+                <div class="booking-map kisan-leaflet-map" aria-label="Interactive map of Haryana procurement centres"></div>
 
                 <div class="recommended-heading">
                     <h2>Recommended centres</h2>
@@ -180,6 +187,8 @@
         </section>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/leaflet-maps.js"></script>
     <script src="../js/book-slot.js"></script>
 </body>
 

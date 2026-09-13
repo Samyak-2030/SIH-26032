@@ -121,6 +121,33 @@
     margin-top: 26px;
 }
 
+.booking-map-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.booking-map-heading h2 {
+    margin: 0 0 12px;
+    color: #172333;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+}
+
+.booking-map-heading span {
+    color: #687785;
+    font-size: 12px;
+}
+
+.booking-map {
+    height: 310px;
+    overflow: hidden;
+    border: 1px solid #c6e0cc;
+    border-radius: 8px;
+}
+
 .search-box {
     display: flex;
     align-items: center;
@@ -406,6 +433,12 @@
     .booking-fields {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .booking-map-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
     }
 
     .recommended-centre {

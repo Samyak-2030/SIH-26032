@@ -16,7 +16,7 @@ const confirmationWait = document.querySelector('#confirmation-wait');
 
 const viewBookingDetails = document.querySelector('#view-booking-details');
 
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const BOOKING_API_BASE_URL = 'http://127.0.0.1:8000';
 
 let centreRows = [];
 let selectedCentre = null;
@@ -74,19 +74,11 @@ function selectCentre(row) {
 // Load centres from backend
 async function loadCentres() {
     try {
-        const response = await fetch(
-            `${API_BASE_URL}/api/centres`
-        );
-
-        if (!response.ok) {
-            throw new Error('Unable to load procurement centres.');
-        }
-
-        const data = await response.json();
+        const centres = await window.KisanSetuMaps.loadCentres();
 
         centreContainer.innerHTML = '';
 
-        data.centres.forEach((centre) => {
+        centres.forEach((centre) => {
             const row = createCentreRow(centre);
             centreContainer.appendChild(row);
         });
@@ -181,7 +173,7 @@ bookingForm.addEventListener('submit', async (event) => {
             'Creating your booking...';
 
         const response = await fetch(
-            `${API_BASE_URL}/api/bookings`,
+            `${BOOKING_API_BASE_URL}/api/bookings`,
             {
                 method: 'POST',
 

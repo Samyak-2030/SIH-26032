@@ -1,5 +1,5 @@
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const FARMER_API_BASE_URL = "http://127.0.0.1:8000";
 const token = localStorage.getItem("kisansetu-access-token");
 if (!token) {
     window.location.href = "farmer-login.html";
@@ -7,7 +7,7 @@ if (!token) {
 async function loadFarmerProfile() {
     try {
         const response = await fetch(
-            `${API_BASE_URL}/api/farmers/me`,
+            `${FARMER_API_BASE_URL}/api/farmers/me`,
             {
                 method: "GET",
                 headers: {
@@ -102,3 +102,4 @@ languageButton.addEventListener('click', () => {
 
 applyDashboardLanguage(currentLanguage);
 loadFarmerProfile();
+window.KisanSetuMaps.loadCentres().catch((error) => console.error(error));

@@ -2,7 +2,7 @@ const loginForm = document.querySelector('#farmer-login-form');
 const identifierInput = document.querySelector('#login-identifier');
 const passwordInput = document.querySelector('#login-password');
 const formMessage = document.querySelector('#form-message');
-const loginEndpoint = 'http://127.0.0.1:8000/api/auth/login';
+const loginEndpoint = 'https://sih-26032-gm8c.onrender.com/api/auth/login';
 
 document.querySelector('.toggle-password').addEventListener('click', function () {
     const isPasswordHidden = passwordInput.type === 'password';

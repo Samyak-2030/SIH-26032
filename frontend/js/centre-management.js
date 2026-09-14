@@ -30,7 +30,7 @@ centreForm.addEventListener('submit', async (event) => {
     payload.longitude = Number(payload.longitude);
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/centres', {
+        const response = await fetch('https://sih-26032-gm8c.onrender.com/api/centres', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

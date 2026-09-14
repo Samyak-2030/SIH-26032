@@ -1,5 +1,5 @@
 
-const FARMER_API_BASE_URL = "http://127.0.0.1:8000";
+const FARMER_API_BASE_URL = "https://sih-26032-gm8c.onrender.com";
 const token = localStorage.getItem("kisansetu-access-token");
 if (!token) {
     window.location.href = "farmer-login.html";

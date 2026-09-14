@@ -16,7 +16,7 @@ const confirmationWait = document.querySelector('#confirmation-wait');
 
 const viewBookingDetails = document.querySelector('#view-booking-details');
 
-const BOOKING_API_BASE_URL = 'http://127.0.0.1:8000';
+const BOOKING_API_BASE_URL = 'https://sih-26032-gm8c.onrender.com';
 
 let centreRows = [];
 let selectedCentre = null;

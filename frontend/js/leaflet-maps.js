@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = 'https://sih-26032-gm8c.onrender.com';
 
 window.KisanSetuMaps = (() => {
     const haryanaBounds = [[27.65, 74.45], [31.0, 77.65]];

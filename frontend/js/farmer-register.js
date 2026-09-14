@@ -1,6 +1,6 @@
 const form = document.getElementById("farmer-register-form");
 const message = document.getElementById("form-message");
-const registrationEndpoint = "http://127.0.0.1:8000/api/farmers/register";
+const registrationEndpoint = "https://sih-26032-gm8c.onrender.com/api/farmers/register";
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const passwordMatchMessage = document.getElementById("password-match-message");

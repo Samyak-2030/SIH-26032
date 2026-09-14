@@ -122,6 +122,8 @@ initialize_database()
 @app.post('/api/farmers/register')
 
 def register_farmer(farmer:FarmerRegister):
+    normalized_mobile = farmer.mobile.strip()
+    normalized_email = farmer.email.strip().lower() if farmer.email else None
     try:
         with sqlite3.connect(DATABASE_PATH) as connection:
             cursor = connection.execute(
@@ -132,9 +134,9 @@ def register_farmer(farmer:FarmerRegister):
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
-                    farmer.fullName,
-                    farmer.mobile,
-                    farmer.email,
+                    farmer.fullName.strip(),
+                    normalized_mobile,
+                    normalized_email,
                     farmer.state,
                     farmer.district,
                     farmer.village,
@@ -156,9 +158,9 @@ def register_farmer(farmer:FarmerRegister):
         "message":"farmer registered successfully",
         "farmer": {
             "id": farmer_id,
-            "fullName": farmer.fullName,
-            "mobile": farmer.mobile,
-            "email": farmer.email,
+            "fullName": farmer.fullName.strip(),
+            "mobile": normalized_mobile,
+            "email": normalized_email,
             "state": farmer.state,
             "district": farmer.district,
             "village": farmer.village,
@@ -170,15 +172,17 @@ def register_farmer(farmer:FarmerRegister):
 
 @app.post("/api/auth/login")
 def login_farmer(login: FarmerLogin):
+    identifier = login.identifier.strip()
+    normalized_identifier = identifier.lower() if "@" in identifier else identifier
     with sqlite3.connect(DATABASE_PATH) as connection:
         connection.row_factory = sqlite3.Row
         farmer = connection.execute(
             """
             SELECT id, full_name, mobile, email, password_hash
             FROM farmers
-            WHERE mobile = ? OR lower(email) = lower(?)
+            WHERE mobile = ? OR lower(trim(email)) = ?
             """,
-            (login.identifier.strip(), login.identifier.strip()),
+            (identifier, normalized_identifier),
         ).fetchone()
 
     if farmer is None or not password_hash.verify(login.password, farmer["password_hash"]):

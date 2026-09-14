@@ -61,6 +61,9 @@ form.addEventListener("submit", async function (event) {
     const formData = new FormData(form);
     const formValues = Object.fromEntries(formData.entries());
     const { confirmPassword, ...registrationData } = formValues;
+    registrationData.fullName = registrationData.fullName.trim();
+    registrationData.mobile = registrationData.mobile.trim();
+    registrationData.email = registrationData.email.trim().toLowerCase();
     const { fullName, mobile, password } = registrationData;
 
     validatePasswords();

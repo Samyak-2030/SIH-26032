@@ -14,7 +14,7 @@ document.querySelector('.toggle-password').addEventListener('click', function ()
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const identifier = identifierInput.value.trim();
+    const identifier = identifierInput.value.trim().toLowerCase();
     const password = passwordInput.value;
 
     try {

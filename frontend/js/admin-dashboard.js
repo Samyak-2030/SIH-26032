@@ -19,6 +19,22 @@ async function loadAdminOverview() {
         adminStats[2].textContent = completed.length;
         adminStats[3].textContent = tickets.filter((ticket) => ticket.checks.payment !== 'Passed').length;
     }
+    const alertMessages = active.length
+        ? [`${active.length} active queue tickets across the network.`, `${tickets.filter((ticket) => ticket.status === 'Called').length} tickets currently called.`, `${tickets.filter((ticket) => ticket.checks.payment !== 'Passed').length} payments pending completion.`]
+        : ['No live alerts yet.'];
+    const alertsPanel = document.querySelectorAll('.admin-panel')[1];
+    const alerts = alertsPanel?.querySelectorAll('.admin-alert');
+    if (alertsPanel && alerts) {
+        alerts.forEach((alert) => alert.remove());
+        const subtitle = alertsPanel.querySelector('.admin-panel-subtitle');
+        alertMessages.forEach((text) => {
+            const alert = document.createElement('div');
+            alert.className = 'admin-alert';
+            alert.innerHTML = '<b>•</b><span></span>';
+            alert.querySelector('span').textContent = text;
+            subtitle?.after(alert);
+        });
+    }
 }
 
 loadAdminOverview().catch((error) => console.error(error));

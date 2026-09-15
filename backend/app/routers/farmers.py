@@ -3,6 +3,7 @@ from fastapi import APIRouter, Depends
 from app.core.security import get_current_farmer
 from app.schemas.farmer import FarmerRegister
 from app.services.farmer_service import register_farmer
+from app.services.farmer_booking_service import list_farmer_bookings
 
 router = APIRouter(prefix="/api/farmers", tags=["farmers"])
 
@@ -21,3 +22,8 @@ def read_current_farmer(farmer=Depends(get_current_farmer)):
         "village": farmer["village"], "landArea": farmer["land_area"],
         "crop": farmer["crop"], "createdAt": farmer["created_at"],
     }
+
+
+@router.get("/me/bookings")
+def read_farmer_bookings(farmer=Depends(get_current_farmer)):
+    return {"bookings": list_farmer_bookings(farmer["id"])}

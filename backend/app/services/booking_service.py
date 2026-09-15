@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime, timezone
+from uuid import uuid4
 
 from fastapi import HTTPException
 from psycopg.errors import UniqueViolation
@@ -8,7 +9,7 @@ from app.schemas.booking import BookingCreate
 
 
 def create_booking(booking: BookingCreate, farmer) -> dict:
-    booking_id = f"BK-{datetime.now().strftime('%Y%m%d%H%M%S')}-{farmer['id']}"
+    booking_id = f"BK-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S%f')}-{farmer['id']}-{uuid4().hex[:6]}"
 
     with get_connection() as connection:
         try:
@@ -18,6 +19,8 @@ def create_booking(booking: BookingCreate, farmer) -> dict:
             ).fetchone()
             if centre is None:
                 raise HTTPException(status_code=404, detail="Selected procurement centre is not available.")
+
+            connection.execute("SELECT pg_advisory_xact_lock(%s)", (booking.centre_id,))
 
             cursor = connection.execute(
                 """

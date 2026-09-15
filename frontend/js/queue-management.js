@@ -40,21 +40,26 @@ function renderTickets(tickets) {
         row.innerHTML = `<div><strong>Token #${ticket.tokenNumber}</strong><span>${ticket.farmerName} · ${ticket.crop}</span><small>${ticket.status} · ${ticket.mobile}</small></div><div class="admin-ticket-checks"></div>`;
         const checks = row.querySelector('.admin-ticket-checks');
         ['quality', 'weighing', 'procurement', 'payment'].forEach((check) => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'admin-action';
-            button.textContent = `${check}: ${ticket.checks[check]}`;
-            button.addEventListener('click', async () => {
-                const nextStatus = ticket.checks[check] === 'Passed' ? 'Pending' : 'Passed';
+            const select = document.createElement('select');
+            select.className = 'admin-action admin-check-select';
+            select.setAttribute('aria-label', `${check} check for token ${ticket.tokenNumber}`);
+            ['Pending', 'In Progress', 'Passed', 'Failed'].forEach((status) => {
+                const option = document.createElement('option');
+                option.value = status;
+                option.textContent = `${check}: ${status}`;
+                option.selected = ticket.checks[check] === status;
+                select.appendChild(option);
+            });
+            select.addEventListener('change', async () => {
                 try {
                     await request(`/api/queue/tickets/${ticket.id}/checks`, {
-                        method: 'PATCH', body: JSON.stringify({ check, status: nextStatus })
+                        method: 'PATCH', body: JSON.stringify({ check, status: select.value })
                     });
                     message.textContent = `${check} check updated for token #${ticket.tokenNumber}.`;
                     await loadQueue();
                 } catch (error) { message.textContent = error.message; }
             });
-            checks.appendChild(button);
+            checks.appendChild(select);
         });
         queueTable.appendChild(row);
     });

@@ -56,6 +56,37 @@ async function loadFarmerQueue() {
     cards[2].children[2].textContent = `Quality ${ticket.checks.quality} · Weighing ${ticket.checks.weighing}`;
     cards[3].children[1].textContent = ticket.checks.payment;
     cards[3].children[2].textContent = `Procurement ${ticket.checks.procurement}`;
+    const notifications = document.querySelectorAll('.notification-item p');
+    notifications[0].innerHTML = `<strong>${Math.max(0, ticket.queuePosition - 1)} farmers</strong> ahead of you.`;
+    notifications[1].textContent = `Your token #${ticket.tokenNumber} is ${ticket.status.toLowerCase()}.`;
+    notifications[2].textContent = `Estimated wait: ${ticket.estimatedWaitMinutes} minutes.`;
+}
+
+async function loadFarmerBookings() {
+    const response = await fetch(
+        `${FARMER_API_BASE_URL}/api/farmers/me/bookings`,
+        { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || "Unable to load bookings.");
+    const history = document.querySelector("#booking-history");
+    if (!data.bookings?.length) {
+        history.innerHTML = '<p class="dashboard-empty-state">No bookings yet. Book a slot to see it here.</p>';
+        return;
+    }
+    history.innerHTML = data.bookings.map((booking) => {
+        const ticket = booking.ticket;
+        const checks = ticket
+            ? `Quality ${ticket.checks.quality} · Weighing ${ticket.checks.weighing} · Procurement ${ticket.checks.procurement} · Payment ${ticket.checks.payment}`
+            : "Ticket not created";
+        return `<article class="booking-history-row"><div><strong>${booking.bookingId}</strong><span>${booking.centre.name} · ${booking.bookingDate} · ${booking.timeSlot}</span><small>${booking.crop} · ${checks}</small></div><button class="dashboard-booking-ticket" data-ticket-id="${ticket?.id || ''}" type="button">${ticket ? `Token #${ticket.tokenNumber} · ${ticket.status}` : "View details"}</button></article>`;
+    }).join('');
+    history.querySelectorAll('.dashboard-booking-ticket').forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.dataset.ticketId) localStorage.setItem('kisansetu-selected-ticket', button.dataset.ticketId);
+            window.location.href = 'live-queue.html';
+        });
+    });
 }
 const languageButton = document.querySelector('.dashboard-language');
 let currentLanguage = localStorage.getItem('kisansetu-language') || 'en';
@@ -126,5 +157,7 @@ languageButton.addEventListener('click', () => {
 applyDashboardLanguage(currentLanguage);
 loadFarmerProfile();
 loadFarmerQueue().catch((error) => console.error(error));
+loadFarmerBookings().catch((error) => console.error(error));
 setInterval(() => loadFarmerQueue().catch(() => {}), 5000);
+setInterval(() => loadFarmerBookings().catch(() => {}), 5000);
 window.KisanSetuMaps.loadCentres().catch((error) => console.error(error));

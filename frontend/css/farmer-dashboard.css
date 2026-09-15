@@ -81,6 +81,44 @@
     margin-top: auto;
 }
 
+.booking-history {
+    display: grid;
+    gap: 10px;
+}
+
+.booking-history-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+}
+
+.booking-history-row > div {
+    display: grid;
+    gap: 5px;
+}
+
+.booking-history-row span,
+.booking-history-row small,
+.dashboard-empty-state {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.dashboard-booking-ticket {
+    padding: 9px 12px;
+    border: 1px solid var(--green);
+    border-radius: 6px;
+    color: var(--green);
+    background: transparent;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .dashboard-main {
     width: min(100%, 1120px);
     margin: 0 auto;

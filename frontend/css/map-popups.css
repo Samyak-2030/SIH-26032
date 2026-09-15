@@ -1,0 +1,36 @@
+.map-centre-summary {
+    display: grid;
+    min-width: 210px;
+    gap: 5px;
+    color: #172333;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.map-centre-summary strong {
+    margin-bottom: 3px;
+    color: #176b48;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+}
+
+.map-centre-summary span {
+    color: #52635e;
+}
+
+.map-centre-summary b {
+    color: #19352d;
+}
+
+.map-google-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #176b48;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.map-google-link:hover {
+    text-decoration: underline;
+}

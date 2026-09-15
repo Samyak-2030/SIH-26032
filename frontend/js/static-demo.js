@@ -21,7 +21,14 @@
     function getState() {
         try {
             const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-            return saved?.tickets ? { ...saved, centres: saved.centres || CENTRES } : defaultState();
+            if (!saved?.tickets) return defaultState();
+            const savedCentres = saved.centres || [];
+            const centres = CENTRES.map((baseCentre) => ({
+                ...baseCentre,
+                ...(savedCentres.find((centre) => centre.id === baseCentre.id) || {}),
+            }));
+            savedCentres.filter((centre) => !centres.some((entry) => entry.id === centre.id)).forEach((centre) => centres.push(centre));
+            return { ...saved, centres };
         } catch {
             return defaultState();
         }

@@ -24,7 +24,7 @@ window.KisanSetuMaps = (() => {
         const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
         const demoTickets = window.KisanSetuDemo?.getTickets?.() || [];
         const queueCount = demoTickets.filter((ticket) => ticket.centreId === Number(centre.id) && ['Waiting', 'Called', 'Serving'].includes(ticket.status)).length;
-        return `<div class="map-centre-summary"><strong>${centre.name}</strong><span>${centre.location}, ${centre.district}, ${centre.state}</span><span>Capacity: ${centre.capacity}/day</span><span>Status: ${centre.status || 'Active'} · Queue: ${queueCount}</span><a class="map-google-link" href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">View on Google Maps ↗</a></div>`;
+        return `<div class="map-centre-summary"><strong>${centre.name} - ${centre.location}</strong><span><b>Location:</b> ${centre.location}</span><span><b>District:</b> ${centre.district}, ${centre.state}</span><span><b>Capacity:</b> ${centre.capacity}/day</span><span><b>Status:</b> ${centre.status || 'Active'} · <b>Queue:</b> ${queueCount}</span><a class="map-google-link" href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">View on Google Maps ↗</a></div>`;
     }
 
     function drawMarkers(centres) {

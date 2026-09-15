@@ -23,12 +23,11 @@
 
 .admin-logo {
     display: grid;
-    width: 35px;
-    height: 35px;
+    width: 116px;
+    height: 103px;
     place-items: center;
+    object-fit: contain;
     border-radius: 10px 10px 10px 3px;
-    color: #fff;
-    background: #176b48
 }
 
 .admin-login-card {

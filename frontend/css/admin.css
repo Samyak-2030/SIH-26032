@@ -55,11 +55,11 @@
 
 .admin-brand-mark {
     display: grid;
-    width: 33px;
-    height: 33px;
+    width: 116px;
+    height: 103px;
     place-items: center;
+    object-fit: contain;
     border-radius: 9px 9px 9px 3px;
-    background: #176b48
 }
 
 .admin-nav {

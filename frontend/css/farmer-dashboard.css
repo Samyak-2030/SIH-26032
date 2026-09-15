@@ -32,12 +32,11 @@
 
 .dashboard-brand-mark {
     display: grid;
-    width: 32px;
-    height: 32px;
+    width: 116px;
+    height: 103px;
     place-items: center;
+    object-fit: contain;
     border-radius: 9px 9px 9px 3px;
-    color: var(--white);
-    background: var(--green);
 }
 
 .dashboard-nav {

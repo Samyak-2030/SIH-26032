@@ -200,6 +200,7 @@ bookingForm.addEventListener('submit', async (event) => {
         }
 
         const booking = data.booking;
+        localStorage.setItem('kisansetu-selected-ticket', String(booking.queueEntryId || booking.queueToken));
 
         // Show real booking information returned by backend
         bookingDetails.textContent =

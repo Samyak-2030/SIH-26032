@@ -34,14 +34,14 @@ def create_booking(booking: BookingCreate, farmer) -> dict:
             queue_count = connection.execute(
                 """
                 SELECT COUNT(*) FROM queue_entries
-                WHERE centre_id = ? AND status IN ('Waiting', 'Serving')
+                WHERE centre_id = ? AND status IN ('Waiting', 'Called', 'Serving')
                 """,
                 (booking.centre_id,),
             ).fetchone()[0]
             queue_position = queue_count + 1
             token_number = queue_position
             estimated_wait = queue_position * 10
-            connection.execute(
+            queue_cursor = connection.execute(
                 """
                 INSERT INTO queue_entries (
                     booking_id, farmer_id, centre_id, token_number, queue_position,
@@ -59,6 +59,7 @@ def create_booking(booking: BookingCreate, farmer) -> dict:
 
     return {
         "bookingId": booking_id,
+        "queueEntryId": queue_cursor.lastrowid,
         "farmerId": farmer["id"],
         "centreId": booking.centre_id,
         "crop": booking.crop,

@@ -65,6 +65,17 @@
     font-size: 16px;
 }
 
+.queue-ticket-selector {
+    min-width: min(100%, 360px);
+    margin-top: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    color: var(--ink);
+    background: var(--white);
+    font: inherit;
+}
+
 .queue-eyebrow {
     margin: 0 0 10px;
     color: #3b35a5;

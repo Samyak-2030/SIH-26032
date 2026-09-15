@@ -87,6 +87,10 @@ CREATE TABLE IF NOT EXISTS queue_entries (
     queue_position INTEGER NOT NULL,
     estimated_wait_minutes INTEGER NOT NULL DEFAULT 0,
     status TEXT NOT NULL DEFAULT 'Waiting',
+    quality_check TEXT NOT NULL DEFAULT 'Pending',
+    weighing_check TEXT NOT NULL DEFAULT 'Pending',
+    procurement_check TEXT NOT NULL DEFAULT 'Pending',
+    payment_check TEXT NOT NULL DEFAULT 'Pending',
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (booking_id) REFERENCES bookings(id),

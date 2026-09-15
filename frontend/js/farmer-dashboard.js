@@ -34,6 +34,29 @@ async function loadFarmerProfile() {
         console.error(error);
     }
 }
+
+async function loadFarmerQueue() {
+    const response = await fetch(
+        `${FARMER_API_BASE_URL}/api/queue/mine`,
+        { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || "Unable to load farmer queue.");
+    const ticket = data.tickets?.[0];
+    if (!ticket) return;
+    localStorage.setItem("kisansetu-selected-ticket", String(ticket.id));
+    const cards = document.querySelectorAll(".overview-card");
+    const nextSlot = cards[0];
+    nextSlot.children[1].textContent = ticket.bookingDate;
+    nextSlot.children[2].textContent = ticket.timeSlot;
+    nextSlot.children[3].textContent = ticket.centreName;
+    cards[1].children[1].textContent = `#${ticket.tokenNumber}`;
+    cards[1].children[2].textContent = `${ticket.status} · ${ticket.estimatedWaitMinutes} min`;
+    cards[2].children[1].textContent = ticket.status;
+    cards[2].children[2].textContent = `Quality ${ticket.checks.quality} · Weighing ${ticket.checks.weighing}`;
+    cards[3].children[1].textContent = ticket.checks.payment;
+    cards[3].children[2].textContent = `Procurement ${ticket.checks.procurement}`;
+}
 const languageButton = document.querySelector('.dashboard-language');
 let currentLanguage = localStorage.getItem('kisansetu-language') || 'en';
 
@@ -102,4 +125,6 @@ languageButton.addEventListener('click', () => {
 
 applyDashboardLanguage(currentLanguage);
 loadFarmerProfile();
+loadFarmerQueue().catch((error) => console.error(error));
+setInterval(() => loadFarmerQueue().catch(() => {}), 5000);
 window.KisanSetuMaps.loadCentres().catch((error) => console.error(error));

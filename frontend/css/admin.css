@@ -68,6 +68,44 @@
     margin-top: 38px
 }
 
+.admin-live-queue {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.admin-ticket-row,
+.admin-live-monitor-list p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px;
+    border: 1px solid var(--line, #d8e4d7);
+    border-radius: 8px;
+    background: var(--white, #fff);
+}
+
+.admin-ticket-row > div:first-child,
+.admin-live-monitor-list p {
+    display: grid;
+    gap: 4px;
+}
+
+.admin-ticket-row span,
+.admin-ticket-row small,
+.admin-live-monitor-list span {
+    color: var(--muted, #65766e);
+    font-size: 12px;
+}
+
+.admin-ticket-checks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
 .admin-nav a {
     display: flex;
     align-items: center;

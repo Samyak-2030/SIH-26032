@@ -52,6 +52,11 @@ window.KisanSetuMaps = (() => {
 
     async function loadCentres() {
         initialise();
+        if (window.KisanSetuDemo?.getCentres) {
+            const centres = window.KisanSetuDemo.getCentres();
+            drawMarkers(centres);
+            return centres;
+        }
         try {
             const response = await fetch(`${API_BASE_URL}/api/centres`);
             if (!response.ok) throw new Error('Unable to load procurement centres.');

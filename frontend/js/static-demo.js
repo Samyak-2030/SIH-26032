@@ -2,10 +2,10 @@
     const STORAGE_KEY = 'kisansetu-static-demo-state';
     const TICKET_KEY = 'kisansetu-selected-ticket';
     const CENTRES = [
-        { id: 1, name: 'Centre A', district: 'Hisar', location: 'Hisar City', capacity: 500, status: 'Active' },
-        { id: 2, name: 'Centre B', district: 'Bhiwani', location: 'Bhiwani City', capacity: 400, status: 'Active' },
-        { id: 3, name: 'Centre C', district: 'Sirsa', location: 'Sirsa City', capacity: 300, status: 'Active' },
-        { id: 4, name: 'Centre D', district: 'Karnal', location: 'Karnal City', capacity: 450, status: 'Active' },
+        { id: 1, name: 'Centre A', district: 'Hisar', location: 'Hisar City', capacity: 500, status: 'Active', latitude: 29.1492, longitude: 75.7217 },
+        { id: 2, name: 'Centre B', district: 'Bhiwani', location: 'Bhiwani City', capacity: 400, status: 'Active', latitude: 28.793, longitude: 76.1398 },
+        { id: 3, name: 'Centre C', district: 'Sirsa', location: 'Sirsa City', capacity: 300, status: 'Active', latitude: 29.5349, longitude: 75.0289 },
+        { id: 4, name: 'Centre D', district: 'Karnal', location: 'Karnal City', capacity: 450, status: 'Active', latitude: 29.6857, longitude: 76.9905 },
     ];
 
     const initialTickets = [

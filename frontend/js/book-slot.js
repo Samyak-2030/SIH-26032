@@ -87,3 +87,4 @@ viewBookingDetails.addEventListener('click', () => {
 });
 
 renderCentres();
+window.KisanSetuMaps.loadCentres().catch(() => {});

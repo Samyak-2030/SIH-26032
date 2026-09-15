@@ -16,4 +16,5 @@ centreForm.addEventListener('submit', (event) => {
 });
 
 renderManagedCentres();
+window.KisanSetuMaps.loadCentres().catch(() => {});
 window.addEventListener('kisansetu-demo-updated', renderManagedCentres);

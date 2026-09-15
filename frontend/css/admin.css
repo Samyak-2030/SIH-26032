@@ -4,23 +4,23 @@
     gap: 11px;
     margin-top: auto;
     /* border: 1px solid rgba(255, 255, 255, 0.18); */
-    color: #e7b7b7;
-    background: rgba(189, 73, 61, 0.08);
+    color: #b9c9d0;
+    background: rgba(255, 255, 255, 0.06);
     
 }
 
 .admin-sidebar>.admin-logout span {
-    color: #e58e87;
+    color: #b9c9d0;
 }
 
 .admin-sidebar>.admin-logout:hover {
     color: #fff;
     /* border-color: rgba(229, 142, 135, 0.7); */
-    background: rgba(189, 73, 61, 0.3);
+    background: rgba(27, 115, 93, 0.75);
 }
 
 .admin-sidebar>.admin-logout:hover span {
-    color: #ffd2ce;
+    color: #ffffff;
 }
 
 .admin-page {
@@ -597,7 +597,9 @@
     }
 
     .admin-logout {
-        display: none
+        display: flex;
+        flex: 0 0 auto;
+        margin-top: 8px;
     }
 
     .admin-main {

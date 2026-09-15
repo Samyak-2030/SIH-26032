@@ -21,7 +21,7 @@
 .dashboard-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     padding: 0 13px;
     color: var(--white);
     font-family: 'Space Grotesk', sans-serif;

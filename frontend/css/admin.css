@@ -46,7 +46,7 @@
 .admin-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     padding: 0 12px;
     color: #fff;
     font: 700 21px 'Space Grotesk', sans-serif;

@@ -15,7 +15,7 @@
 .admin-auth-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     color: var(--ink);
     font: 700 24px 'Space Grotesk', sans-serif;
     text-decoration: none

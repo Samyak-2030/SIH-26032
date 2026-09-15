@@ -20,7 +20,7 @@
 .payment-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     color: var(--ink);
     font-family: 'Space Grotesk', sans-serif;
     font-size: 22px;

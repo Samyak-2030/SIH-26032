@@ -1,15 +1,17 @@
-import sqlite3
 from contextlib import contextmanager
 from collections.abc import Iterator
 
-from app.core.config import DATABASE_PATH
+import psycopg
+from psycopg.rows import dict_row
+
+from app.core.config import DATABASE_URL
 
 
 @contextmanager
-def get_connection() -> Iterator[sqlite3.Connection]:
-    DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    connection = sqlite3.connect(DATABASE_PATH)
-    connection.row_factory = sqlite3.Row
+def get_connection() -> Iterator[psycopg.Connection]:
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL is not configured. Set it to a PostgreSQL connection string.")
+    connection = psycopg.connect(DATABASE_URL, row_factory=dict_row)
     try:
         yield connection
         connection.commit()

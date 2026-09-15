@@ -1,6 +1,5 @@
-import sqlite3
-
 from fastapi import HTTPException
+from psycopg.errors import UniqueViolation
 from pwdlib.exceptions import UnknownHashError
 
 from app.core.security import hash_password, verify_password
@@ -18,7 +17,8 @@ def register_farmer(farmer: FarmerRegister) -> dict:
                 INSERT INTO farmers (
                     full_name, mobile, email, state, district, village,
                     land_area, crop, password_hash
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                RETURNING id
                 """,
                 (
                     farmer.full_name.strip(), normalized_mobile, normalized_email,
@@ -26,8 +26,8 @@ def register_farmer(farmer: FarmerRegister) -> dict:
                     farmer.land_area, farmer.crop, hash_password(farmer.password),
                 ),
             )
-            farmer_id = cursor.lastrowid
-    except sqlite3.IntegrityError as error:
+            farmer_id = cursor.fetchone()["id"]
+    except UniqueViolation as error:
         if "mobile" in str(error).lower():
             raise HTTPException(
                 status_code=409,
@@ -59,7 +59,7 @@ def authenticate_farmer(login: FarmerLogin):
             """
             SELECT id, full_name, mobile, email, password_hash
             FROM farmers
-            WHERE mobile = ? OR lower(trim(email)) = ?
+            WHERE mobile = %s OR lower(trim(email)) = %s
             ORDER BY id DESC
             """,
             (identifier, normalized_identifier),

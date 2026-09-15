@@ -1,6 +1,5 @@
-import sqlite3
-
 from fastapi import HTTPException
+from psycopg.errors import UniqueViolation
 
 from app.database.session import get_connection
 from app.schemas.centre import CentreCreate
@@ -32,7 +31,8 @@ def create_centre(centre: CentreCreate) -> dict:
                 """
                 INSERT INTO centres (
                     name, state, district, location, capacity, status, latitude, longitude
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                RETURNING id
                 """,
                 (
                     centre.name.strip(), centre.state.strip(), centre.district.strip(),
@@ -40,8 +40,8 @@ def create_centre(centre: CentreCreate) -> dict:
                     centre.latitude, centre.longitude,
                 ),
             )
-            centre_id = cursor.lastrowid
-    except sqlite3.IntegrityError as error:
+            centre_id = cursor.fetchone()["id"]
+    except UniqueViolation as error:
         raise HTTPException(status_code=409, detail="A centre with this name already exists.") from error
 
     return {"id": centre_id, **centre.model_dump()}

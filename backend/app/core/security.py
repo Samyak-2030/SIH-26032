@@ -46,7 +46,7 @@ def get_current_farmer(credentials: HTTPAuthorizationCredentials = Depends(beare
             SELECT id, full_name, mobile, email, state, district, village,
                    land_area, crop, created_at
             FROM farmers
-            WHERE id = ?
+            WHERE id = %s
             """,
             (farmer_id,),
         ).fetchone()

@@ -1,6 +1,3 @@
-import sqlite3
-from datetime import datetime, timezone
-
 from fastapi import HTTPException
 
 from app.database.session import get_connection
@@ -49,7 +46,7 @@ def _serialize(row) -> dict:
 
 def _refresh_positions(connection, centre_id: int) -> None:
     waiting = connection.execute(
-        """SELECT id FROM queue_entries WHERE centre_id = ?
+        """SELECT id FROM queue_entries WHERE centre_id = %s
            AND status IN ('Waiting', 'Called', 'Serving')
            ORDER BY CASE status WHEN 'Serving' THEN 0 WHEN 'Called' THEN 1 ELSE 2 END,
                     created_at, id""",
@@ -57,7 +54,7 @@ def _refresh_positions(connection, centre_id: int) -> None:
     ).fetchall()
     for position, row in enumerate(waiting, start=1):
         connection.execute(
-            "UPDATE queue_entries SET queue_position = ?, estimated_wait_minutes = ? WHERE id = ?",
+            "UPDATE queue_entries SET queue_position = %s, estimated_wait_minutes = %s WHERE id = %s",
             (position, max(0, position - 1) * 10, row["id"]),
         )
 
@@ -65,7 +62,7 @@ def _refresh_positions(connection, centre_id: int) -> None:
 def list_farmer_queue(farmer_id: int) -> list[dict]:
     with get_connection() as connection:
         rows = connection.execute(
-            QUEUE_SELECT + " WHERE q.farmer_id = ? ORDER BY q.created_at DESC", (farmer_id,)
+            QUEUE_SELECT + " WHERE q.farmer_id = %s ORDER BY q.created_at DESC", (farmer_id,)
         ).fetchall()
     return [_serialize(row) for row in rows]
 
@@ -73,7 +70,7 @@ def list_farmer_queue(farmer_id: int) -> list[dict]:
 def list_centre_queue(centre_id: int) -> list[dict]:
     with get_connection() as connection:
         rows = connection.execute(
-            QUEUE_SELECT + " WHERE q.centre_id = ? ORDER BY CASE q.status WHEN 'Serving' THEN 0 WHEN 'Called' THEN 1 WHEN 'Waiting' THEN 2 ELSE 3 END, q.created_at, q.id",
+            QUEUE_SELECT + " WHERE q.centre_id = %s ORDER BY CASE q.status WHEN 'Serving' THEN 0 WHEN 'Called' THEN 1 WHEN 'Waiting' THEN 2 ELSE 3 END, q.created_at, q.id",
             (centre_id,),
         ).fetchall()
     return [_serialize(row) for row in rows]
@@ -82,22 +79,22 @@ def list_centre_queue(centre_id: int) -> list[dict]:
 def call_next_token(centre_id: int) -> dict:
     with get_connection() as connection:
         current = connection.execute(
-            "SELECT id FROM queue_entries WHERE centre_id = ? AND status IN ('Called', 'Serving') ORDER BY id LIMIT 1",
+            "SELECT id FROM queue_entries WHERE centre_id = %s AND status IN ('Called', 'Serving') ORDER BY id LIMIT 1",
             (centre_id,),
         ).fetchone()
         if current:
             raise HTTPException(status_code=409, detail="Finish the current token before calling the next token.")
         next_entry = connection.execute(
-            "SELECT id FROM queue_entries WHERE centre_id = ? AND status = 'Waiting' ORDER BY created_at, id LIMIT 1",
+            "SELECT id FROM queue_entries WHERE centre_id = %s AND status = 'Waiting' ORDER BY created_at, id LIMIT 1",
             (centre_id,),
         ).fetchone()
         if next_entry is None:
             raise HTTPException(status_code=404, detail="No waiting tokens for this centre.")
         connection.execute(
-            "UPDATE queue_entries SET status = 'Called' WHERE id = ?", (next_entry["id"],)
+            "UPDATE queue_entries SET status = 'Called' WHERE id = %s", (next_entry["id"],)
         )
         _refresh_positions(connection, centre_id)
-        row = connection.execute(QUEUE_SELECT + " WHERE q.id = ?", (next_entry["id"],)).fetchone()
+        row = connection.execute(QUEUE_SELECT + " WHERE q.id = %s", (next_entry["id"],)).fetchone()
     return _serialize(row)
 
 
@@ -105,19 +102,19 @@ def update_check(entry_id: int, update: QueueCheckUpdate) -> dict:
     column = CHECK_COLUMNS[update.check]
     with get_connection() as connection:
         entry = connection.execute(
-            "SELECT id, centre_id FROM queue_entries WHERE id = ?", (entry_id,)
+            "SELECT id, centre_id FROM queue_entries WHERE id = %s", (entry_id,)
         ).fetchone()
         if entry is None:
             raise HTTPException(status_code=404, detail="Queue ticket not found.")
-        connection.execute(f"UPDATE queue_entries SET {column} = ? WHERE id = ?", (update.status, entry_id))
+        connection.execute(f"UPDATE queue_entries SET {column} = %s WHERE id = %s", (update.status, entry_id))
         checks = connection.execute(
             """SELECT quality_check, weighing_check, procurement_check, payment_check
-               FROM queue_entries WHERE id = ?""",
+               FROM queue_entries WHERE id = %s""",
             (entry_id,),
         ).fetchone()
-        next_status = "Completed" if all(value == "Passed" for value in checks) else "Serving"
-        connection.execute("UPDATE queue_entries SET status = ? WHERE id = ?", (next_status, entry_id))
-        row = connection.execute(QUEUE_SELECT + " WHERE q.id = ?", (entry_id,)).fetchone()
+        next_status = "Completed" if all(value == "Passed" for value in checks.values()) else "Serving"
+        connection.execute("UPDATE queue_entries SET status = %s WHERE id = %s", (next_status, entry_id))
+        row = connection.execute(QUEUE_SELECT + " WHERE q.id = %s", (entry_id,)).fetchone()
     return _serialize(row)
 
 

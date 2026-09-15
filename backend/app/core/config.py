@@ -16,7 +16,7 @@ JWT_SECRET_KEY = os.getenv(
 )
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES", "60"))
-DATABASE_PATH = Path(os.getenv("DATABASE_PATH", str(BACKEND_DIR / "farmers.db")))
+DATABASE_URL = os.getenv("DATABASE_URL")
 SCHEMA_PATH = BACKEND_DIR / "database" / "schema.sql"
 
 CORS_ORIGINS = _split_origins(os.getenv("CORS_ORIGINS"))

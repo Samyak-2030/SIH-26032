@@ -59,6 +59,8 @@ def authenticate_farmer(login: FarmerLogin):
             SELECT id, full_name, mobile, email, password_hash
             FROM farmers
             WHERE mobile = ? OR lower(trim(email)) = ?
+            ORDER BY id DESC
+            LIMIT 1
             """,
             (identifier, normalized_identifier),
         ).fetchone()

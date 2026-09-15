@@ -1,6 +1,7 @@
 import sqlite3
 
 from fastapi import HTTPException
+from pwdlib.exceptions import UnknownHashError
 
 from app.core.security import hash_password, verify_password
 from app.database.session import get_connection
@@ -54,17 +55,24 @@ def authenticate_farmer(login: FarmerLogin):
     identifier = login.identifier.strip()
     normalized_identifier = identifier.lower() if "@" in identifier else identifier
     with get_connection() as connection:
-        farmer = connection.execute(
+        farmers = connection.execute(
             """
             SELECT id, full_name, mobile, email, password_hash
             FROM farmers
             WHERE mobile = ? OR lower(trim(email)) = ?
             ORDER BY id DESC
-            LIMIT 1
             """,
             (identifier, normalized_identifier),
-        ).fetchone()
+        ).fetchall()
 
-    if farmer is None or not verify_password(login.password, farmer["password_hash"]):
+    farmer = None
+    for candidate in farmers:
+        try:
+            if verify_password(login.password, candidate["password_hash"]):
+                farmer = candidate
+                break
+        except (TypeError, ValueError, UnknownHashError):
+            continue
+    if farmer is None:
         raise HTTPException(status_code=401, detail="Invalid email/mobile or password.")
     return farmer

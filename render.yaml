@@ -5,9 +5,15 @@ services:
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    disk:
+      name: kisan-setu-data
+      mountPath: /var/data
+      sizeGB: 1
     envVars:
       - key: JWT_SECRET_KEY
         generateValue: true
+      - key: DATABASE_PATH
+        value: /var/data/farmers.db
       - key: VERCEL_FRONTEND_URL
         sync: false
       - key: CORS_ORIGINS

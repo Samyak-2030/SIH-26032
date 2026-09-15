@@ -1,0 +1,18 @@
+{
+  "rows": 1500,
+  "mean_absolute_error_minutes": 5.28,
+  "r2_score": 0.907,
+  "features": [
+    "Date",
+    "Centre ID",
+    "Time",
+    "Current Queue",
+    "Active Counters",
+    "Farmers Arrived",
+    "Farmers Processed",
+    "Average Processing Time",
+    "Quantity",
+    "Booked Farmers",
+    "Crop"
+  ]
+}

@@ -22,7 +22,9 @@ window.KisanSetuMaps = (() => {
     function markerPopup(centre) {
         const destination = `${centre.name}, ${centre.latitude}, ${centre.longitude}`;
         const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
-        return `<strong>${centre.name}</strong><br>${centre.district}, ${centre.state}<br>${centre.location}<br>Capacity: ${centre.capacity}/day<br><a class="map-google-link" href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>`;
+        const demoTickets = window.KisanSetuDemo?.getTickets?.() || [];
+        const queueCount = demoTickets.filter((ticket) => ticket.centreId === Number(centre.id) && ['Waiting', 'Called', 'Serving'].includes(ticket.status)).length;
+        return `<div class="map-centre-summary"><strong>${centre.name}</strong><span>${centre.location}, ${centre.district}, ${centre.state}</span><span>Capacity: ${centre.capacity}/day</span><span>Status: ${centre.status || 'Active'} · Queue: ${queueCount}</span><a class="map-google-link" href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">View on Google Maps ↗</a></div>`;
     }
 
     function drawMarkers(centres) {
@@ -39,6 +41,7 @@ window.KisanSetuMaps = (() => {
     }
 
     function initialise() {
+        if (!window.L) return;
         document.querySelectorAll('.kisan-leaflet-map').forEach((element) => {
             if (element.dataset.mapReady) return;
             const map = L.map(element, { scrollWheelZoom: false }).fitBounds(haryanaBounds);
@@ -47,11 +50,13 @@ window.KisanSetuMaps = (() => {
             }).addTo(map);
             maps.push({ map, markerLayer: L.layerGroup().addTo(map) });
             element.dataset.mapReady = 'true';
+            window.setTimeout(() => map.invalidateSize(), 0);
         });
     }
 
     async function loadCentres() {
         initialise();
+        if (!window.L) return [];
         if (window.KisanSetuDemo?.getCentres) {
             const centres = window.KisanSetuDemo.getCentres();
             drawMarkers(centres);
@@ -69,6 +74,10 @@ window.KisanSetuMaps = (() => {
             return fallbackCentres;
         }
     }
+
+    window.addEventListener('kisansetu-demo-updated', () => {
+        if (window.KisanSetuDemo?.getCentres) drawMarkers(window.KisanSetuDemo.getCentres());
+    });
 
     return { initialise, loadCentres, drawMarkers };
 })();

@@ -35,7 +35,7 @@ function selectCentre(row) {
 
 function renderCentres() {
     centreContainer.innerHTML = '';
-    window.KisanSetuDemo.CENTRES.forEach((centre) => centreContainer.appendChild(createCentreRow(centre)));
+        window.KisanSetuDemo.getCentres().forEach((centre) => centreContainer.appendChild(createCentreRow(centre)));
     centreRows = [...centreContainer.querySelectorAll('.recommended-centre')];
     centreCount.textContent = `${centreRows.length} centres`;
     noCentres.hidden = true;
